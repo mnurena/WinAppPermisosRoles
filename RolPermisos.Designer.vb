@@ -22,21 +22,6 @@ Partial Class RolPermisos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Nuevo")
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Abrir")
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Guardar")
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Guardar como")
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Imprimir")
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Archivos", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3, TreeNode4, TreeNode5})
-        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Deshacer")
-        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Rehacer")
-        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Cortar")
-        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Copiar")
-        Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Pegar")
-        Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Editar", New System.Windows.Forms.TreeNode() {TreeNode7, TreeNode8, TreeNode9, TreeNode10, TreeNode11})
-        Dim TreeNode13 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Usuarios")
-        Dim TreeNode14 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Roles")
-        Dim TreeNode15 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuración", New System.Windows.Forms.TreeNode() {TreeNode13, TreeNode14})
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btGuardar = New System.Windows.Forms.Button()
         Me.btNuevo = New System.Windows.Forms.Button()
@@ -110,37 +95,6 @@ Partial Class RolPermisos
         Me.tvPermisos.ItemHeight = 20
         Me.tvPermisos.Location = New System.Drawing.Point(6, 69)
         Me.tvPermisos.Name = "tvPermisos"
-        TreeNode1.Name = "Nodo0"
-        TreeNode1.Text = "Nuevo"
-        TreeNode2.Name = "Nodo1"
-        TreeNode2.Text = "Abrir"
-        TreeNode3.Name = "Nodo2"
-        TreeNode3.Text = "Guardar"
-        TreeNode4.Name = "Nodo3"
-        TreeNode4.Text = "Guardar como"
-        TreeNode5.Name = "Nodo4"
-        TreeNode5.Text = "Imprimir"
-        TreeNode6.Name = "NODO00"
-        TreeNode6.Text = "Archivos"
-        TreeNode7.Name = "Nodo7"
-        TreeNode7.Text = "Deshacer"
-        TreeNode8.Name = "Nodo8"
-        TreeNode8.Text = "Rehacer"
-        TreeNode9.Name = "Nodo9"
-        TreeNode9.Text = "Cortar"
-        TreeNode10.Name = "Nodo0"
-        TreeNode10.Text = "Copiar"
-        TreeNode11.Name = "Nodo1"
-        TreeNode11.Text = "Pegar"
-        TreeNode12.Name = "NODO02"
-        TreeNode12.Text = "Editar"
-        TreeNode13.Name = "Nodo26"
-        TreeNode13.Text = "Usuarios"
-        TreeNode14.Name = "Nodo27"
-        TreeNode14.Text = "Roles"
-        TreeNode15.Name = "Nodo6"
-        TreeNode15.Text = "Configuración"
-        Me.tvPermisos.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode6, TreeNode12, TreeNode15})
         Me.tvPermisos.Size = New System.Drawing.Size(302, 431)
         Me.tvPermisos.TabIndex = 1
         '
