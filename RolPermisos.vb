@@ -5,34 +5,34 @@ Imports Newtonsoft.Json
 Public Class RolPermisos
 
     Private Sub RolPermisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Dim rol As New usuarios
-        'rol.ListRol.Tables(0).Clear()
-        'cborol.DataSource = rol.ListRol.Tables(0)
-        'cborol.ValueMember = "id_Rol"
-        'cboRol.DisplayMember = "nom_Rol"
-
-        'M4Nvx
-        Dim dr As DataRow
-        Dim dt = New DataTable()
-        Dim idCoulumn = New DataColumn("id_Rol", Type.GetType("System.Int32"))
-        Dim nameCoulumn = New DataColumn("nom_Rol", Type.GetType("System.String"))
-
-        dt.Columns.Add(idCoulumn)
-        dt.Columns.Add(nameCoulumn)
-
-        dr = dt.NewRow()
-        dr("id_Rol") = 1
-        dr("nom_Rol") = "Name1"
-        dt.Rows.Add(dr)
-
-        dr = dt.NewRow()
-        dr("id_Rol") = 2
-        dr("nom_Rol") = "Name2"
-        dt.Rows.Add(dr)
-
-        cboRol.DataSource = dt
+        Dim rol As New usuarios
+        rol.ListRol.Tables(0).Clear()
+        cboRol.DataSource = rol.ListRol.Tables(0)
         cboRol.ValueMember = "id_Rol"
         cboRol.DisplayMember = "nom_Rol"
+
+        'M4Nvx
+        'Dim dr As DataRow
+        'Dim dt = New DataTable()
+        'Dim idCoulumn = New DataColumn("id_Rol", Type.GetType("System.Int32"))
+        'Dim nameCoulumn = New DataColumn("nom_Rol", Type.GetType("System.String"))
+
+        'dt.Columns.Add(idCoulumn)
+        'dt.Columns.Add(nameCoulumn)
+
+        'dr = dt.NewRow()
+        'dr("id_Rol") = 1
+        'dr("nom_Rol") = "Name1"
+        'dt.Rows.Add(dr)
+
+        'dr = dt.NewRow()
+        'dr("id_Rol") = 2
+        'dr("nom_Rol") = "Name2"
+        'dt.Rows.Add(dr)
+
+        'cboRol.DataSource = dt
+        'cboRol.ValueMember = "id_Rol"
+        'cboRol.DisplayMember = "nom_Rol"
 
         LoadTree()
 
@@ -40,19 +40,10 @@ Public Class RolPermisos
 
     Private Sub cboRol_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboRol.SelectedIndexChanged
 
-        Dim a = cboRol.Text
-
-        If (a.Equals("Name1")) Then
-            VerPermisos(1)
+        If (IsNumeric(cboRol.SelectedValue)) Then
+            'Cargar segun selección en bsae de datos
+            VerPermisos(CInt(cboRol.SelectedValue))
         End If
-
-
-        If (a.Equals("Name2")) Then
-            VerPermisos(2)
-        End If
-
-        'Cargar segun selección en bsae de datos
-        'VerPermisos(CInt(cboRol.SelectedValue))
 
     End Sub
 
@@ -297,6 +288,9 @@ Public Class RolPermisos
 
     'Buscar en base de datos segun el rol seleccionado
     Sub VerPermisos(ByVal idrol As Integer)
+
+        tvPermisos.Nodes.Clear()
+
         'Dim ver As New usuarios
         ' Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         Dim jsp = ""
@@ -313,11 +307,13 @@ Public Class RolPermisos
 
         End If
 
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(jsp)
+        If (jsp <> "") Then
+            Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(jsp)
+            populateTreeView(user.Node)
+        Else
+            LoadTree()
+        End If
 
-        tvPermisos.Nodes.Clear()
-
-        populateTreeView(user.Node)
 
     End Sub
 
