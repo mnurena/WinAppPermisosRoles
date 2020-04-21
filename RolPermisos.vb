@@ -23,9 +23,36 @@ Public Class RolPermisos
             '    'Cargar segun selección en bsae de datos
             '    VerPermisos(CInt(cboRol.SelectedValue))
             'End If
+
+
+            'M4Nvx
+            'Dim dr As DataRow
+            'Dim dt = New DataTable()
+            'Dim idCoulumn = New DataColumn("id_Rol", Type.GetType("System.Int32"))
+            'Dim nameCoulumn = New DataColumn("nom_Rol", Type.GetType("System.String"))
+
+            'dt.Columns.Add(idCoulumn)
+            'dt.Columns.Add(nameCoulumn)
+
+            'dr = dt.NewRow()
+            'dr("id_Rol") = 1
+            'dr("nom_Rol") = "Name1"
+            'dt.Rows.Add(dr)
+
+            'dr = dt.NewRow()
+            'dr("id_Rol") = 2
+            'dr("nom_Rol") = "Name2"
+            'dt.Rows.Add(dr)
+
+            'cboRol.DataSource = dt
+
         Catch ex As Exception
             MsgBox("Error cargando los permisos del ROL" & rol.erru, MsgBoxStyle.Critical)
         End Try
+
+        tvPermisos.Nodes.Clear()
+
+        populateTreeView(LoadTree().Node)
 
     End Sub
 
@@ -63,16 +90,17 @@ Public Class RolPermisos
             End If
         End If
     End Sub
+
     ' APORTE AÑADIDO POR M4Nvx
-    ' 
     Private Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
 
+        'Manux
+        'GEN_JSON(tvPermisos)
 
         ' Se declaran variables para poder guardar el JSON generado
         ' y se envia un mensaje de confirmacion o del posible error.
         Dim save As New usuarios
-        Dim result As String
-        result = save.UPRol(CInt(cboRol.SelectedValue), GEN_JSON(tvPermisos))
+        Dim result = save.UPRol(CInt(cboRol.SelectedValue), GEN_JSON(tvPermisos))
 
         If result = "1" Then
             MsgBox("SE GUARDO CORRECTAMENTE", MsgBoxStyle.Information)
@@ -88,14 +116,25 @@ Public Class RolPermisos
 
         Dim ver As New usuarios
 
-        Dim JSONStr As String = "{""NODOPADRE"":[{""Id"":"""",""Name"":""Archivos"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Nuevo"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Abrir"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Guardar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Guardar como"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Imprimir"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""Editar"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Deshacer"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Rehacer"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""cortar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""copiar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Pegar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""configuración"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Usuarios"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Roles"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""Ventanas"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Nueva Ventana"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""cascada"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Mosaico Vertical"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]}]}"
+        'Dim JSONStr As String = "{""NODOPADRE"":[{""Id"":"""",""Name"":""Archivos"",""Value"":true,
+        '""NODOHIJO"":[{""Id"":"""",""Name"":""Nuevo"",""Value"":true,
+        '""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Abrir"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Guardar"",""Value"":true,
+        '""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Guardar como"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Imprimir"",""Value"":true,
+        '""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""Editar"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Deshacer"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},
+        '{""Id"":"""",""Name"":""Rehacer"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""cortar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""copiar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Pegar"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""configuración"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Usuarios"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Roles"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]},{""Id"":"""",""Name"":""Ventanas"",""Value"":true,""NODOHIJO"":[{""Id"":"""",""Name"":""Nueva Ventana"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""cascada"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]},{""Id"":"""",""Name"":""Mosaico Vertical"",""Value"":true,""Actions"":[{""Id"":"""",""Name"":""New"",""Value"":true},{""Id"":"""",""Name"":""Edit"",""Value"":true},{""Id"":"""",""Name"":""Delete"",""Value"":true}]}]}]}"
+
+        'M4Nvx
+        'Dim JSONStr As String = "{""Node"":[{""Id"":""NODO00"",""Name"":""Archivos"",""Value"":false,""Nodo"":[{""Id"":""Nodo0"",""Name"":""Nuevo"",""Value"":true},{""Id"":""Nodo1"",""Name"":""Abrir"",""Value"":false},{""Id"":""Nodo2"",""Name"":""Guardar"",""Value"":true},{""Id"":""Nodo3"",""Name"":""Guardar como"",""Value"":false},{""Id"":""Nodo4"",""Name"":""Imprimir"",""Value"":true}]},
+        '            {""Id"":""NODO02"",""Name"":""Editar"",""Value"":false,""Nodo"":[{""Id"":""Nodo7"",""Name"":""Deshacer"",""Value"":true},{""Id"":""Nodo8"",""Name"":""Rehacer"",""Value"":false},{""Id"":""Nodo9"",""Name"":""Cortar"",""Value"":true},{""Id"":""Nodo0"",""Name"":""Copiar"",""Value"":false},{""Id"":""Nodo1"",""Name"":""Pegar"",""Value"":true}]},
+        '            {""Id"":""Nodo6"",""Name"":""Configuración"",""Value"":false,""Nodo"":[{""Id"":""Nodo26"",""Name"":""Usuarios"",""Value"":true},{""Id"":""Nodo27"",""Name"":""Roles"",""Value"":false}]},{""Id"":""Nodo10"",""Name"":""Ventanas"",""Value"":false,""Nodo"":[{""Id"":""Nodo12"",""Name"":""Nueva Ventana"",""Value"":true},{""Id"":""Nodo13"",""Name"":""Cascada"",""Value"":false},{""Id"":""Nodo14"",""Name"":""Mosaico Vertical"",""Value"":true}]}]}"
+
         'Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         ' ##################################################################################
         ' AQUI APARECE EL PROBLEMA, OBTIENE EL JSON DE LA BD, PERO NO LO DESEREALIZA
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
-        Clipboard.SetText(JSONStr)
-        populateTreeView(user.Node)
+        'Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
+        'Clipboard.SetText(JSONStr)
+        'populateTreeView(user.Node)
 
     End Sub
 
@@ -107,7 +146,8 @@ Public Class RolPermisos
                 Dim nodeText As String = ngObject.Name
 
                 Dim childNode As New TreeNode(nodeText) With {
-                    .Checked = ngObject.Value
+                    .Checked = ngObject.Value,
+                    .Name = ngObject.Id
                 }
 
                 tvPermisos.Nodes.Add(childNode)
@@ -162,7 +202,8 @@ Public Class RolPermisos
     End Sub
 
     Private Sub btNuevo_Click(sender As Object, e As EventArgs) Handles btNuevo.Click
-        'LoadTree()
+        tvPermisos.Nodes.Clear()
 
+        populateTreeView(LoadTree().Node)
     End Sub
 End Class

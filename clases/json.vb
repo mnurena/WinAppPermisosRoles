@@ -50,4 +50,164 @@ Module CREAR_JSON
 
         End Using
     End Function
+
+    'Carga de datos
+    Public Function LoadTree() As NodeRootDto
+
+        Dim result = New NodeRootDto With {
+            .Node = New List(Of NODOPADRE)
+        }
+
+        Dim nodeArchivos = New NODOPADRE With {
+            .Id = "NODO00",
+            .Name = "Archivos",
+            .Value = False
+        }
+        nodeArchivos.Nodo = New List(Of NODOHIJO)
+
+        Dim subNodeNuevo = New NODOHIJO With {
+            .Id = "SubNodeArchivo0",
+            .Name = "Nuevo",
+            .Value = False
+        }
+
+        Dim subNodeAbrir = New NODOHIJO With {
+            .Id = "SubNodeArchivo1",
+            .Name = "Abrir",
+            .Value = False
+        }
+
+        Dim subNodeGuardar = New NODOHIJO With {
+            .Id = "SubNodeArchivo2",
+            .Name = "Guardar",
+            .Value = False
+        }
+
+        Dim subNodeGuardarComo = New NODOHIJO With {
+            .Id = "SubNodeArchivo3",
+            .Name = "Guardar como",
+            .Value = False
+        }
+
+        Dim subNodeImprimir = New NODOHIJO With {
+            .Id = "SubNodeArchivo4",
+            .Name = "Imprimir",
+            .Value = False
+        }
+
+        nodeArchivos.Nodo.Add(subNodeNuevo)
+        nodeArchivos.Nodo.Add(subNodeAbrir)
+        nodeArchivos.Nodo.Add(subNodeGuardar)
+        nodeArchivos.Nodo.Add(subNodeGuardarComo)
+        nodeArchivos.Nodo.Add(subNodeImprimir)
+
+        'NODO 2 ********************************************************************************
+        Dim nodeEditar = New NODOPADRE With {
+            .Id = "NODO01",
+            .Name = "Editar",
+            .Value = False
+        }
+
+        nodeEditar.Nodo = New List(Of NODOHIJO)
+
+        Dim subNodeDeshacer = New NODOHIJO With {
+            .Id = "SubNodeEditar0",
+            .Name = "Deshacer",
+            .Value = False
+        }
+
+        Dim subNodeRehacer = New NODOHIJO With {
+            .Id = "SubNodeEditar1",
+            .Name = "Rehacer",
+            .Value = False
+        }
+
+        Dim subNodeCortar = New NODOHIJO With {
+            .Id = "SubNodeEditar2",
+            .Name = "Cortar",
+            .Value = False
+        }
+
+        Dim subNodeCopiar = New NODOHIJO With {
+            .Id = "SubNodeEditar3",
+            .Name = "Copiar",
+            .Value = False
+        }
+
+        Dim subNodePegar = New NODOHIJO With {
+            .Id = "SubNodeEditar4",
+            .Name = "Pegar",
+            .Value = False
+        }
+
+        nodeEditar.Nodo.Add(subNodeDeshacer)
+        nodeEditar.Nodo.Add(subNodeRehacer)
+        nodeEditar.Nodo.Add(subNodeCortar)
+        nodeEditar.Nodo.Add(subNodeCopiar)
+        nodeEditar.Nodo.Add(subNodePegar)
+
+        'NODO 3 ********************************************************************************
+        Dim nodeConfiguracion = New NODOPADRE With {
+            .Id = "NODO02",
+            .Name = "Configuración",
+            .Value = False
+        }
+
+        nodeConfiguracion.Nodo = New List(Of NODOHIJO)
+
+        Dim subUsuarios = New NODOHIJO With {
+            .Id = "SubNodeConfiguracion0",
+            .Name = "Usuarios",
+            .Value = False
+        }
+
+        Dim subNodeRoles = New NODOHIJO With {
+            .Id = "SubNodeConfiguracion1",
+            .Name = "Roles",
+            .Value = False
+        }
+
+        nodeConfiguracion.Nodo.Add(subUsuarios)
+        nodeConfiguracion.Nodo.Add(subNodeRoles)
+
+        'NODO 4 ********************************************************************************
+        Dim nodeVentanas = New NODOPADRE With {
+            .Id = "NODO03",
+            .Name = "Ventanas",
+            .Value = False
+        }
+
+        nodeVentanas.Nodo = New List(Of NODOHIJO)
+
+        Dim subNodeNueva = New NODOHIJO With {
+            .Id = "SubNodeVentana0",
+            .Name = "Nueva Ventana",
+            .Value = False
+        }
+
+        Dim subNodeCascada = New NODOHIJO With {
+            .Id = "SubNodeVentana1",
+            .Name = "Cascada",
+            .Value = False
+        }
+
+        Dim subNodeMosaico = New NODOHIJO With {
+            .Id = "SubNodeVentana2",
+            .Name = "Mosaico Vertical",
+            .Value = False
+        }
+
+        nodeVentanas.Nodo.Add(subUsuarios)
+        nodeVentanas.Nodo.Add(subNodeRoles)
+        nodeVentanas.Nodo.Add(subNodeMosaico)
+
+        result.Node.Add(nodeArchivos)
+        result.Node.Add(nodeEditar)
+        result.Node.Add(nodeConfiguracion)
+        result.Node.Add(nodeVentanas)
+
+        Return result
+
+    End Function
+
 End Module
