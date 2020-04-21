@@ -1,32 +1,53 @@
-﻿'Imports System.IO
-'Imports System.Text
-'Imports System.Text.Json
-'Public Class json
+﻿Imports Newtonsoft.Json
+Imports System.IO
+Module CREAR_JSON
+    Public Function GEN_JSON(treeview As TreeView) As String
+        ' Se declara un MEMORYSTREAM para almacenar el JSON
+        ' en memoria
+        Using ms = New MemoryStream()
+            Dim nodeDto As New NodeRootDto
+            Dim nP As New List(Of NODOPADRE)
 
-'    Public Function CreaJSONAnidado() As String
+            ' Se recorren los nodos en el TREEVIEW 
+            For Each padre As TreeNode In treeview.Nodes
 
-'    End Function
+                Dim nodeParent As New NODOPADRE With {
+                    .Id = padre.Name,
+                    .Name = padre.Text,
+                    .Value = padre.Checked
+                }
 
-'    Private Shared Sub JSONAnidado()
-'        Dim jsonWOpt As JsonWriterOptions = New JsonWriterOptions With {
-'            .Indented = True
-'        }
+                ' Se evalua si el NODO PADRE tiene NODOS HIJOS 
+                ' y se recorren todos los NODOS HIJOS
+                If padre.Nodes.Count > 0 Then
 
-'        Using ms = New MemoryStream()
+                    Dim lst As New List(Of NODOHIJO)
 
-'            Using writer = New Utf8JsonWriter(ms, jsonWOpt)
-'                writer.WriteStartObject()
-'                writer.WriteString("nombre", "scrapywar.com")
-'                writer.WriteStartObject("admins")
-'                writer.WriteString("usuario", "nosoyadmin")
-'                writer.WriteString("contrasena", "NoMeAcuerdo")
-'                writer.WriteEndObject()
-'                writer.WriteEndObject()
-'            End Using
+                    For Each hijos As TreeNode In padre.Nodes
 
-'            Dim jsonstr As String = Encoding.UTF8.GetString(ms.ToArray())
-'            Console.WriteLine("JSON Anidado: " & jsonstr)
-'            File.WriteAllText("yo2.json", jsonstr)
-'        End Using
-'    End Sub
-'End Class
+                        Dim h As New NODOHIJO With {
+                            .Id = hijos.Name,
+                            .Name = hijos.Text,
+                            .Value = hijos.Checked
+                        }
+                        lst.Add(h)
+
+                    Next hijos
+
+                    nodeParent.Nodo = lst
+                End If
+
+                nP.Add(nodeParent)
+
+            Next padre
+
+            ' Se almacena la estructura 
+            nodeDto.Node = nP
+
+            ' Se convierte e formato JSON 
+            Dim jsonstr As String = JsonConvert.SerializeObject(nodeDto)
+            GEN_JSON = jsonstr
+
+        End Using
+    End Function
+End Module
