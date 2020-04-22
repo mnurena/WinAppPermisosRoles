@@ -70,24 +70,31 @@ Module CREAR_JSON
             .Name = "Nuevo",
             .Value = False
         }
-        subNodeNuevo.SubNodo = New List(Of Actions)
+        subNodeNuevo.SubNodo = New List(Of NODOHIJO)
 
-        Dim SubNodoActionsNuevo = New Actions With {
+        'Sub subNodeNuevo  ********************************************************************************
+
+        Dim SubNodoActionsNuevo = New NODOHIJO With {
                 .Id = "action1",
-                .Name = "Nuevo",
-                .Value = True
+                .Name = "Nuevo XD",
+                .Value = False
         }
 
-        Dim SubNodoActionsEditar = New Actions With {
+        Dim SubNodoActionsEditar = New NODOHIJO With {
                 .Id = "action2",
-                .Name = "Editar",
-                .Value = True
+                .Name = "Editar XD",
+                .Value = False
         }
-        Dim SubNodoActionsElimi = New Actions With {
+        Dim SubNodoActionsElimi = New NODOHIJO With {
                 .Id = "action3",
-                .Name = "Eliminar",
-                .Value = True
+                .Name = "Eliminar XD",
+                .Value = False
         }
+        subNodeNuevo.SubNodo.Add(SubNodoActionsNuevo)
+        subNodeNuevo.SubNodo.Add(SubNodoActionsEditar)
+        subNodeNuevo.SubNodo.Add(SubNodoActionsElimi)
+
+        'Sub subNodeNuevo  ********************************************************************************
 
         Dim subNodeAbrir = New NODOHIJO With {
             .Id = "SubNodeArchivo1",
@@ -112,12 +119,8 @@ Module CREAR_JSON
             .Name = "Imprimir",
             .Value = False
         }
-        subNodeNuevo.SubNodo.Add(SubNodoActionsNuevo)
-        subNodeNuevo.SubNodo.Add(SubNodoActionsEditar)
-        subNodeNuevo.SubNodo.Add(SubNodoActionsElimi)
 
         nodeArchivos.Nodo.Add(subNodeNuevo)
-
         nodeArchivos.Nodo.Add(subNodeAbrir)
         nodeArchivos.Nodo.Add(subNodeGuardar)
         nodeArchivos.Nodo.Add(subNodeGuardarComo)
