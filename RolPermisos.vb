@@ -128,13 +128,13 @@ Public Class RolPermisos
         '            {""Id"":""NODO02"",""Name"":""Editar"",""Value"":false,""Nodo"":[{""Id"":""Nodo7"",""Name"":""Deshacer"",""Value"":true},{""Id"":""Nodo8"",""Name"":""Rehacer"",""Value"":false},{""Id"":""Nodo9"",""Name"":""Cortar"",""Value"":true},{""Id"":""Nodo0"",""Name"":""Copiar"",""Value"":false},{""Id"":""Nodo1"",""Name"":""Pegar"",""Value"":true}]},
         '            {""Id"":""Nodo6"",""Name"":""Configuración"",""Value"":false,""Nodo"":[{""Id"":""Nodo26"",""Name"":""Usuarios"",""Value"":true},{""Id"":""Nodo27"",""Name"":""Roles"",""Value"":false}]},{""Id"":""Nodo10"",""Name"":""Ventanas"",""Value"":false,""Nodo"":[{""Id"":""Nodo12"",""Name"":""Nueva Ventana"",""Value"":true},{""Id"":""Nodo13"",""Name"":""Cascada"",""Value"":false},{""Id"":""Nodo14"",""Name"":""Mosaico Vertical"",""Value"":true}]}]}"
 
-        'Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
+        Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         ' ##################################################################################
         ' AQUI APARECE EL PROBLEMA, OBTIENE EL JSON DE LA BD, PERO NO LO DESEREALIZA
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
-        'Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
-        'Clipboard.SetText(JSONStr)
-        'populateTreeView(user.Node)
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
+        Clipboard.SetText(JSONStr)
+        populateTreeView(user.Node)
 
     End Sub
 

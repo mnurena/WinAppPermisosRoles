@@ -70,6 +70,24 @@ Module CREAR_JSON
             .Name = "Nuevo",
             .Value = False
         }
+        subNodeNuevo.SubNodo = New List(Of Actions)
+
+        Dim SubNodoActionsNuevo = New Actions With {
+                .Id = "action1",
+                .Name = "Nuevo",
+                .Value = True
+        }
+
+        Dim SubNodoActionsEditar = New Actions With {
+                .Id = "action2",
+                .Name = "Editar",
+                .Value = True
+        }
+        Dim SubNodoActionsElimi = New Actions With {
+                .Id = "action3",
+                .Name = "Eliminar",
+                .Value = True
+        }
 
         Dim subNodeAbrir = New NODOHIJO With {
             .Id = "SubNodeArchivo1",
@@ -94,8 +112,12 @@ Module CREAR_JSON
             .Name = "Imprimir",
             .Value = False
         }
+        subNodeNuevo.SubNodo.Add(SubNodoActionsNuevo)
+        subNodeNuevo.SubNodo.Add(SubNodoActionsEditar)
+        subNodeNuevo.SubNodo.Add(SubNodoActionsElimi)
 
         nodeArchivos.Nodo.Add(subNodeNuevo)
+
         nodeArchivos.Nodo.Add(subNodeAbrir)
         nodeArchivos.Nodo.Add(subNodeGuardar)
         nodeArchivos.Nodo.Add(subNodeGuardarComo)
