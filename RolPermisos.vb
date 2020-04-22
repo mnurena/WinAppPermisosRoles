@@ -169,31 +169,12 @@ Public Class RolPermisos
                 Dim nodeText As String = ngObject.Name
 
                 Dim childNode As New TreeNode(nodeText) With {
-                    .Checked = ngObject.Value
+                    .Checked = ngObject.Value,
+                    .Name = ngObject.Id
                 }
 
                 parentNode.Nodes.Add(childNode)
-                populateTreeView3(ngObject.SubNodo, parentNode)
-
-            Next
-
-        End If
-
-
-    End Sub
-
-    Private Sub populateTreeView3(childObjects As List(Of Actions), parentNode As TreeNode)
-
-        If childObjects IsNot Nothing AndAlso childObjects.Count > 0 Then
-
-            For Each ngObject In childObjects
-                Dim nodeText As String = ngObject.Name
-
-                Dim childNode As New TreeNode(nodeText) With {
-                    .Checked = ngObject.Value
-                }
-
-                parentNode.Nodes.Add(childNode)
+                populateTreeView2(ngObject.SubNodo, childNode)
 
             Next
 
