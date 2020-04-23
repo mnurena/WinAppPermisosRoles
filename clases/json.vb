@@ -30,6 +30,23 @@ Module CREAR_JSON
                             .Name = hijos.Text,
                             .Value = hijos.Checked
                         }
+                        '######################################################
+                        ' SI COMENTAS ESTE BLOQUE, AGREGA TODOS LOS NODOS, INCLUYENDO LAS 3 
+                        ' ACCIONES, PERO COMO HIJOS DEL NODO ARCHIVOS, Y NO COMO HIJOS DEL
+                        ' NODO NUEVO, Y SI ESTA EN FUNCIONAMIENTO, NO AGREGA ESTOS NODOS.
+                        If hijos.Nodes.Count > 0 Then
+                            Dim act As New List(Of NODOHIJO)
+                            For Each action As TreeNode In hijos.Nodes
+                                Dim a As New NODOHIJO With {
+                                    .Id = action.Name,
+                                    .Name = action.Text,
+                                    .Value = action.Checked
+                                }
+                                act.Add(a)
+                            Next action
+                            h.SubNodo = act
+                        End If
+                        '########################################################
                         lst.Add(h)
 
                     Next hijos
@@ -75,19 +92,19 @@ Module CREAR_JSON
         'Sub subNodeNuevo  ********************************************************************************
 
         Dim SubNodoActionsNuevo = New NODOHIJO With {
-                .Id = "action1",
-                .Name = "Nuevo XD",
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
                 .Value = False
         }
 
         Dim SubNodoActionsEditar = New NODOHIJO With {
-                .Id = "action2",
-                .Name = "Editar XD",
+                .Id = "ndoEditar",
+                .Name = "Editar",
                 .Value = False
         }
         Dim SubNodoActionsElimi = New NODOHIJO With {
-                .Id = "action3",
-                .Name = "Eliminar XD",
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
                 .Value = False
         }
         subNodeNuevo.SubNodo.Add(SubNodoActionsNuevo)
