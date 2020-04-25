@@ -16,15 +16,10 @@ End Class
 
 Public Class NodeRootDto : Inherits BaseNodo
 
-    Public Property Node As List(Of NODOPADRE)
+    Public Property Node As List(Of NODOHIJO)
 
 End Class
 
-Public Class NODOPADRE : Inherits BaseNodo
-
-    Public Property Nodo As List(Of NODOHIJO)
-
-End Class
 
 Public Class NODOHIJO : Inherits BaseNodo
 

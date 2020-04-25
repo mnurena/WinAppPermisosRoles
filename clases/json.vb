@@ -1,86 +1,70 @@
 ﻿Imports Newtonsoft.Json
 Imports System.IO
+
 Module CREAR_JSON
     Public Function GEN_JSON(treeview As TreeView) As String
+
         ' Se declara un MEMORYSTREAM para almacenar el JSON
         ' en memoria
         Using ms = New MemoryStream()
             Dim nodeDto As New NodeRootDto
-            Dim nP As New List(Of NODOPADRE)
+            Dim nP As New List(Of NODOHIJO)
 
             ' Se recorren los nodos en el TREEVIEW 
             For Each padre As TreeNode In treeview.Nodes
 
-                Dim nodeParent As New NODOPADRE With {
-                    .Id = padre.Name,
-                    .Name = padre.Text,
-                    .Value = padre.Checked
-                }
-
-                ' Se evalua si el NODO PADRE tiene NODOS HIJOS 
-                ' y se recorren todos los NODOS HIJOS
-                If padre.Nodes.Count > 0 Then
-
-                    Dim lst As New List(Of NODOHIJO)
-
-                    For Each hijos As TreeNode In padre.Nodes
-
-                        Dim h As New NODOHIJO With {
-                            .Id = hijos.Name,
-                            .Name = hijos.Text,
-                            .Value = hijos.Checked
-                        }
-                        '######################################################
-                        ' SI COMENTAS ESTE BLOQUE, AGREGA TODOS LOS NODOS, INCLUYENDO LAS 3 
-                        ' ACCIONES, PERO COMO HIJOS DEL NODO ARCHIVOS, Y NO COMO HIJOS DEL
-                        ' NODO NUEVO, Y SI ESTA EN FUNCIONAMIENTO, NO AGREGA ESTOS NODOS.
-                        If hijos.Nodes.Count > 0 Then
-                            Dim act As New List(Of NODOHIJO)
-                            For Each action As TreeNode In hijos.Nodes
-                                Dim a As New NODOHIJO With {
-                                    .Id = action.Name,
-                                    .Name = action.Text,
-                                    .Value = action.Checked
-                                }
-                                act.Add(a)
-                            Next action
-                            h.SubNodo = act
-                        End If
-                        '########################################################
-                        lst.Add(h)
-
-                    Next hijos
-
-                    nodeParent.Nodo = lst
-                End If
-
-                nP.Add(nodeParent)
+                Dim subChield = GetJson_ChieldNode(padre)
+                nP.Add(subChield)
 
             Next padre
 
             ' Se almacena la estructura 
             nodeDto.Node = nP
 
-            ' Se convierte e formato JSON 
+            '    ' Se convierte e formato JSON 
             Dim jsonstr As String = JsonConvert.SerializeObject(nodeDto)
             GEN_JSON = jsonstr
 
         End Using
     End Function
 
+    Private Function GetJson_ChieldNode(node As TreeNode) As NODOHIJO
+
+        Dim chieldResult As New NODOHIJO With {
+            .Id = node.Name,
+            .Name = node.Text,
+            .Value = node.Checked,
+            .SubNodo = New List(Of NODOHIJO)
+        }
+
+        If node.Nodes IsNot Nothing AndAlso node.Nodes.Count > 0 Then
+
+            For Each ngObject As TreeNode In node.Nodes
+
+                Dim ch = GetJson_ChieldNode(ngObject)
+                chieldResult.SubNodo.Add(ch)
+
+            Next ngObject
+
+        End If
+
+        GetJson_ChieldNode = chieldResult
+
+    End Function
+
     'Carga de datos
     Public Function LoadTree() As NodeRootDto
 
         Dim result = New NodeRootDto With {
-            .Node = New List(Of NODOPADRE)
+            .Node = New List(Of NODOHIJO)
         }
 
-        Dim nodeArchivos = New NODOPADRE With {
+        Dim nodeArchivos = New NODOHIJO With {
             .Id = "NODEARCHIVO",
             .Name = "Archivos",
             .Value = False
         }
-        nodeArchivos.Nodo = New List(Of NODOHIJO)
+        nodeArchivos.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeNuevo = New NODOHIJO With {
             .Id = "SubNodeArchivo",
@@ -243,20 +227,20 @@ Module CREAR_JSON
 
         ' END Sub subNodeGuardarCOMO  ********************************************************************************
 
-        nodeArchivos.Nodo.Add(subNodeNuevo)
-        nodeArchivos.Nodo.Add(subNodeAbrir)
-        nodeArchivos.Nodo.Add(subNodeGuardar)
-        nodeArchivos.Nodo.Add(subNodeGuardarComo)
-        nodeArchivos.Nodo.Add(subNodeImprimir)
+        nodeArchivos.SubNodo.Add(subNodeNuevo)
+        nodeArchivos.SubNodo.Add(subNodeAbrir)
+        nodeArchivos.SubNodo.Add(subNodeGuardar)
+        nodeArchivos.SubNodo.Add(subNodeGuardarComo)
+        nodeArchivos.SubNodo.Add(subNodeImprimir)
 
         'NODO 2 ********************************************************************************
-        Dim nodeEditar = New NODOPADRE With {
+        Dim nodeEditar = New NODOHIJO With {
             .Id = "NODO01",
             .Name = "Editar",
             .Value = False
         }
 
-        nodeEditar.Nodo = New List(Of NODOHIJO)
+        nodeEditar.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeDeshacer = New NODOHIJO With {
             .Id = "SubNodeEditar0",
@@ -288,20 +272,20 @@ Module CREAR_JSON
             .Value = False
         }
 
-        nodeEditar.Nodo.Add(subNodeDeshacer)
-        nodeEditar.Nodo.Add(subNodeRehacer)
-        nodeEditar.Nodo.Add(subNodeCortar)
-        nodeEditar.Nodo.Add(subNodeCopiar)
-        nodeEditar.Nodo.Add(subNodePegar)
+        nodeEditar.SubNodo.Add(subNodeDeshacer)
+        nodeEditar.SubNodo.Add(subNodeRehacer)
+        nodeEditar.SubNodo.Add(subNodeCortar)
+        nodeEditar.SubNodo.Add(subNodeCopiar)
+        nodeEditar.SubNodo.Add(subNodePegar)
 
         'NODO 3 ********************************************************************************
-        Dim nodeConfiguracion = New NODOPADRE With {
+        Dim nodeConfiguracion = New NODOHIJO With {
             .Id = "NODO02",
             .Name = "Configuración",
             .Value = False
         }
 
-        nodeConfiguracion.Nodo = New List(Of NODOHIJO)
+        nodeConfiguracion.SubNodo = New List(Of NODOHIJO)
 
         Dim subUsuarios = New NODOHIJO With {
             .Id = "SubNodeConfiguracion0",
@@ -315,17 +299,17 @@ Module CREAR_JSON
             .Value = False
         }
 
-        nodeConfiguracion.Nodo.Add(subUsuarios)
-        nodeConfiguracion.Nodo.Add(subNodeRoles)
+        nodeConfiguracion.SubNodo.Add(subUsuarios)
+        nodeConfiguracion.SubNodo.Add(subNodeRoles)
 
         'NODO 4 ********************************************************************************
-        Dim nodeVentanas = New NODOPADRE With {
+        Dim nodeVentanas = New NODOHIJO With {
             .Id = "NODO03",
             .Name = "Ventanas",
             .Value = False
         }
 
-        nodeVentanas.Nodo = New List(Of NODOHIJO)
+        nodeVentanas.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeNueva = New NODOHIJO With {
             .Id = "SubNodeVentana0",
@@ -345,9 +329,9 @@ Module CREAR_JSON
             .Value = False
         }
 
-        nodeVentanas.Nodo.Add(subUsuarios)
-        nodeVentanas.Nodo.Add(subNodeRoles)
-        nodeVentanas.Nodo.Add(subNodeMosaico)
+        nodeVentanas.SubNodo.Add(subUsuarios)
+        nodeVentanas.SubNodo.Add(subNodeRoles)
+        nodeVentanas.SubNodo.Add(subNodeMosaico)
 
         result.Node.Add(nodeArchivos)
         result.Node.Add(nodeEditar)
