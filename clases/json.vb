@@ -76,54 +76,107 @@ Module CREAR_JSON
         }
 
         Dim nodeArchivos = New NODOPADRE With {
-            .Id = "NODO00",
+            .Id = "NODEARCHIVO",
             .Name = "Archivos",
             .Value = False
         }
         nodeArchivos.Nodo = New List(Of NODOHIJO)
 
         Dim subNodeNuevo = New NODOHIJO With {
-            .Id = "SubNodeArchivo0",
+            .Id = "SubNodeArchivo",
             .Name = "Nuevo",
             .Value = False
         }
-        subNodeNuevo.SubNodo = New List(Of NODOHIJO)
 
         'Sub subNodeNuevo  ********************************************************************************
 
-        Dim SubNodoActionsNuevo = New NODOHIJO With {
+        subNodeNuevo.SubNodo = New List(Of NODOHIJO)
+
+        Dim SubNodoNuevo_New = New NODOHIJO With {
                 .Id = "ndoAnadir",
                 .Name = "Añadir",
                 .Value = False
         }
 
-        Dim SubNodoActionsEditar = New NODOHIJO With {
+        Dim SubNodoNuevo_Edit = New NODOHIJO With {
                 .Id = "ndoEditar",
                 .Name = "Editar",
                 .Value = False
         }
-        Dim SubNodoActionsElimi = New NODOHIJO With {
+        Dim SubNodoNuevo_Del = New NODOHIJO With {
                 .Id = "ndoElimi",
                 .Name = "Eliminar",
                 .Value = False
         }
-        subNodeNuevo.SubNodo.Add(SubNodoActionsNuevo)
-        subNodeNuevo.SubNodo.Add(SubNodoActionsEditar)
-        subNodeNuevo.SubNodo.Add(SubNodoActionsElimi)
+        subNodeNuevo.SubNodo.Add(SubNodoNuevo_New)
+        subNodeNuevo.SubNodo.Add(SubNodoNuevo_Edit)
+        subNodeNuevo.SubNodo.Add(SubNodoNuevo_Del)
 
-        'Sub subNodeNuevo  ********************************************************************************
+        ' END Sub subNodeNuevo  ********************************************************************************
 
         Dim subNodeAbrir = New NODOHIJO With {
             .Id = "SubNodeArchivo1",
             .Name = "Abrir",
             .Value = False
         }
+        'Sub subNodeAbrir  ********************************************************************************
+
+        subNodeAbrir.SubNodo = New List(Of NODOHIJO)
+
+        Dim SubNodoAbrir_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim SubNodoAbrir_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim SubNodoAbrir_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeAbrir.SubNodo.Add(SubNodoAbrir_New)
+        subNodeAbrir.SubNodo.Add(SubNodoAbrir_Edit)
+        subNodeAbrir.SubNodo.Add(SubNodoAbrir_Del)
+
+        ' END Sub subNodeAbrir  ********************************************************************************
+
 
         Dim subNodeGuardar = New NODOHIJO With {
             .Id = "SubNodeArchivo2",
             .Name = "Guardar",
             .Value = False
         }
+        'Sub subNodeGuardar  ********************************************************************************
+
+        subNodeGuardar.SubNodo = New List(Of NODOHIJO)
+
+        Dim SubNodoGuardar_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim SubNodoGuardar_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim SubNodoGuardar_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeGuardar.SubNodo.Add(SubNodoGuardar_New)
+        subNodeGuardar.SubNodo.Add(SubNodoGuardar_Edit)
+        subNodeGuardar.SubNodo.Add(SubNodoGuardar_Del)
+
+        ' END Sub subNodeGuardar  ********************************************************************************
+
 
         Dim subNodeGuardarComo = New NODOHIJO With {
             .Id = "SubNodeArchivo3",
@@ -131,11 +184,64 @@ Module CREAR_JSON
             .Value = False
         }
 
+        'Sub subNodeGuardarCOMO  ********************************************************************************
+
+        subNodeGuardarComo.SubNodo = New List(Of NODOHIJO)
+
+        Dim SubNodoGuardarC_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim SubNodoGuardarC_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim SubNodoGuardarC_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeGuardarComo.SubNodo.Add(SubNodoGuardarC_New)
+        subNodeGuardarComo.SubNodo.Add(SubNodoGuardarC_Edit)
+        subNodeGuardarComo.SubNodo.Add(SubNodoGuardarC_Del)
+
+        ' END Sub subNodeGuardarCOMO  ********************************************************************************
+
+
         Dim subNodeImprimir = New NODOHIJO With {
             .Id = "SubNodeArchivo4",
             .Name = "Imprimir",
             .Value = False
         }
+
+        'Sub subNodeImprimir  ***************************************************************************
+
+        subNodeImprimir.SubNodo = New List(Of NODOHIJO)
+
+        Dim SubNodoImprimir_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim SubNodoImprimir_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim SubNodoImprimir_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeImprimir.SubNodo.Add(SubNodoImprimir_New)
+        subNodeImprimir.SubNodo.Add(SubNodoImprimir_Edit)
+        subNodeImprimir.SubNodo.Add(SubNodoImprimir_Del)
+
+        ' END Sub subNodeGuardarCOMO  ********************************************************************************
 
         nodeArchivos.Nodo.Add(subNodeNuevo)
         nodeArchivos.Nodo.Add(subNodeAbrir)

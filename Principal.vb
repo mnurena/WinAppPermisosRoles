@@ -1,4 +1,6 @@
 ﻿Imports System.Windows.Forms
+Imports Newtonsoft.Json
+Imports System.IO
 
 Public Class Principal
 
@@ -86,7 +88,15 @@ Public Class Principal
     Private m_ChildFormNumber As Integer
 
     Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoginForm1.Close()
+        'LoginForm1.Close()
+        'Dim filejson As New StreamReader("E:\miki\PROGRAMACION\VISUAL BASIC\GITHUB\WinAppPermisosRoles\json1.json")
+
+        Dim ver As New usuarios
+        Dim JSONStr As String = ver.VerDatosLogin(loginUsu).Tables(0).Rows(0).Item(3).ToString
+        'Dim arrayJson As JArray = JArray.Parse(filejson.ReadToEnd)
+
+        Dim user As Array = JsonConvert.DeserializeObject(Of Array)(JSONStr)
+        MsgBox(arrayJson)
 
     End Sub
 

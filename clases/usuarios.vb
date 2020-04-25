@@ -169,4 +169,21 @@ Public Class usuarios
         End Try
     End Function
 
+    Public Function VerDatosLogin(ByVal loginUsu As String) As DataSet
+        Try
+            Dim ds As New DataSet
+            Dim dllBD As New cnn
+            dllBD.INICIACONEX()
+            Dim dpt As New SqlDataAdapter("SP_USU_VER", dllBD.cn)
+            dpt.SelectCommand.CommandType = CommandType.StoredProcedure
+            dpt.SelectCommand.Parameters.AddWithValue("@LOGIN", loginUsu)
+            dpt.Fill(ds, "SP_USU_VER")
+            VerDatosLogin = ds
+            dllBD.CERRARCONEX()
+            dpt = Nothing
+            dllBD = Nothing
+        Catch ex As Exception
+            erru = Err.Description
+        End Try
+    End Function
 End Class

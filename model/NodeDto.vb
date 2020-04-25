@@ -14,7 +14,7 @@
 
 End Class
 
-Public Class NodeRootDto
+Public Class NodeRootDto : Inherits BaseNodo
 
     Public Property Node As List(Of NODOPADRE)
 

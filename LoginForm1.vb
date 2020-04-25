@@ -19,7 +19,9 @@ Public Class LoginForm1
             Dim LOG As New usuarios
             add = LOG.Login(UsernameTextBox.Text, PasswordTextBox.Text)
             If add = "1" Then
+                loginUsu = UsernameTextBox.Text
                 Principal.Show()
+                Me.Close()
                 'MsgBox(add & idUsu)
             ElseIf add = "0" Then
                 'MsgBox(login.erru)
