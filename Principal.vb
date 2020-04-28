@@ -89,14 +89,60 @@ Public Class Principal
 
     Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'LoginForm1.Close()
-        'Dim filejson As New StreamReader("E:\miki\PROGRAMACION\VISUAL BASIC\GITHUB\WinAppPermisosRoles\json1.json")
-
+        '###########################################################################
+        'Obtengo el JSON con los permisos de la base de datos de acuerdo al usuario 
+        'lo Deserealizo y utilizo la funcion LlenarMenu y le envio el JSON utilizando
+        'el modelo creado
         Dim ver As New usuarios
         Dim JSONStr As String = ver.VerDatosLogin(loginUsu).Tables(0).Rows(0).Item(3).ToString
-        'Dim arrayJson As JArray = JArray.Parse(filejson.ReadToEnd)
 
-        Dim user As Array = JsonConvert.DeserializeObject(Of Array)(JSONStr)
-        MsgBox(arrayJson)
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
+        LlenarMenu(user.Node)
+        '##########################################################################
+    End Sub
+
+    '#############################################################################
+    'Funcion que me permite determinar que menu o que opcion del menu esta permitida
+    'segun los roles elegidos para dicho usuario.
+    Private Sub LlenarMenu(childObjects As List(Of NODOHIJO))
+
+        If childObjects IsNot Nothing AndAlso childObjects.Count > 0 Then
+
+            For Each ngObject In childObjects
+
+                For Each oOpcionMenu As ToolStripMenuItem In MenuStrip.Items
+                    If oOpcionMenu.Name = ngObject.Id Then
+                        oOpcionMenu.Enabled = ngObject.Value
+                    End If
+                    If (ngObject.SubNodo IsNot Nothing AndAlso ngObject.SubNodo.Count > 0) Then
+                        RecorrerSubMenu(ngObject.SubNodo, oOpcionMenu.DropDownItems)
+                    End If
+
+                Next
+
+            Next ngObject
+
+        End If
+
+    End Sub
+
+    'Funcion para recorrer los SubMenus de cada Menu del MDI
+    Private Sub RecorrerSubMenu(childObjects As List(Of NODOHIJO), ByVal oSubmenuItems As ToolStripItemCollection)
+
+        If childObjects IsNot Nothing AndAlso childObjects.Count > 0 Then
+            For Each ngObject In childObjects
+                Dim nodeText As String = ngObject.Name
+                For Each oSubItem As ToolStripItem In oSubmenuItems
+                    If oSubItem.GetType Is GetType(ToolStripMenuItem) Then
+                        If oSubItem.Name = ngObject.Id Then
+                            oSubItem.Enabled = ngObject.Value
+                            Exit For
+                        End If
+                    End If
+                Next
+            Next
+
+        End If
 
     End Sub
 
@@ -110,4 +156,5 @@ Public Class Principal
         ListaUsuarios.MdiParent = Me
         ListaUsuarios.Show()
     End Sub
+
 End Class

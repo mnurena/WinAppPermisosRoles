@@ -101,8 +101,9 @@ Public Class RolPermisos
         ' y se envia un mensaje de confirmacion o del posible error.
         Dim save As New usuarios
         Dim result = save.UPRol(CInt(cboRol.SelectedValue), GEN_JSON(tvPermisos))
+        Clipboard.SetText(GEN_JSON(tvPermisos))
 
-        '
+
         If result = "1" Then
             MsgBox("SE GUARDO CORRECTAMENTE", MsgBoxStyle.Information)
         Else
@@ -119,9 +120,9 @@ Public Class RolPermisos
 
         'M4Nvx
         'TODO Comentar cuando se ejecute contra la db
-        Dim JSONStr As String = "{""Node"":[{""SubNodo"":[{""SubNodo"":[{""SubNodo"":[],""Id"":""ndoAnadir"",""Name"":""Añadir"",""Value"":true},{""SubNodo"":[],""Id"":""ndoEditar"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[],""Id"":""ndoElimi"",""Name"":""Eliminar"",""Value"":true}],""Id"":""SubNodeArchivo0"",""Name"":""Nuevo"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo1"",""Name"":""Abrir"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo2"",""Name"":""Guardar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeArchivo3"",""Name"":""Guardar como"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo4"",""Name"":""Imprimir"",""Value"":true}],""Id"":""NODO00"",""Name"":""Archivos"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeEditar0"",""Name"":""Deshacer"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar1"",""Name"":""Rehacer"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar2"",""Name"":""Cortar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar3"",""Name"":""Copiar"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar4"",""Name"":""Pegar"",""Value"":true}],""Id"":""NODO01"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false}],""Id"":""NODO02"",""Name"":""Configuración"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeVentana2"",""Name"":""Mosaico Vertical"",""Value"":true}],""Id"":""NODO03"",""Name"":""Ventanas"",""Value"":false}]}"
+        'Dim JSONStr As String = "{""Node"":[{""SubNodo"":[{""SubNodo"":[{""SubNodo"":[],""Id"":""ndoAnadir"",""Name"":""Añadir"",""Value"":true},{""SubNodo"":[],""Id"":""ndoEditar"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[],""Id"":""ndoElimi"",""Name"":""Eliminar"",""Value"":true}],""Id"":""SubNodeArchivo0"",""Name"":""Nuevo"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo1"",""Name"":""Abrir"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo2"",""Name"":""Guardar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeArchivo3"",""Name"":""Guardar como"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo4"",""Name"":""Imprimir"",""Value"":true}],""Id"":""NODO00"",""Name"":""Archivos"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeEditar0"",""Name"":""Deshacer"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar1"",""Name"":""Rehacer"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar2"",""Name"":""Cortar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar3"",""Name"":""Copiar"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar4"",""Name"":""Pegar"",""Value"":true}],""Id"":""NODO01"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false}],""Id"":""NODO02"",""Name"":""Configuración"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeVentana2"",""Name"":""Mosaico Vertical"",""Value"":true}],""Id"":""NODO03"",""Name"":""Ventanas"",""Value"":false}]}"
 
-        'Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
+        Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         ' ##################################################################################
         ' AQUI APARECE EL PROBLEMA, OBTIENE EL JSON DE LA BD, PERO NO LO DESEREALIZA
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
@@ -155,7 +156,6 @@ Public Class RolPermisos
 
         End If
         tvPermisos.ExpandAll()
-
 
     End Sub
 

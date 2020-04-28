@@ -60,14 +60,14 @@ Module CREAR_JSON
         }
 
         Dim nodeArchivos = New NODOHIJO With {
-            .Id = "NODEARCHIVO",
+            .Id = "FileMenu",
             .Name = "Archivos",
             .Value = False
         }
         nodeArchivos.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeNuevo = New NODOHIJO With {
-            .Id = "SubNodeArchivo",
+            .Id = "NewToolStripMenuItem",
             .Name = "Nuevo",
             .Value = False
         }
@@ -99,7 +99,7 @@ Module CREAR_JSON
         ' END Sub subNodeNuevo  ********************************************************************************
 
         Dim subNodeAbrir = New NODOHIJO With {
-            .Id = "SubNodeArchivo1",
+            .Id = "OpenToolStripMenuItem",
             .Name = "Abrir",
             .Value = False
         }
@@ -131,7 +131,7 @@ Module CREAR_JSON
 
 
         Dim subNodeGuardar = New NODOHIJO With {
-            .Id = "SubNodeArchivo2",
+            .Id = "SaveToolStripMenuItem",
             .Name = "Guardar",
             .Value = False
         }
@@ -163,7 +163,7 @@ Module CREAR_JSON
 
 
         Dim subNodeGuardarComo = New NODOHIJO With {
-            .Id = "SubNodeArchivo3",
+            .Id = "SaveAsToolStripMenuItem",
             .Name = "Guardar como",
             .Value = False
         }
@@ -196,7 +196,7 @@ Module CREAR_JSON
 
 
         Dim subNodeImprimir = New NODOHIJO With {
-            .Id = "SubNodeArchivo4",
+            .Id = "PrintToolStripMenuItem",
             .Name = "Imprimir",
             .Value = False
         }
@@ -235,7 +235,7 @@ Module CREAR_JSON
 
         'NODO 2 ********************************************************************************
         Dim nodeEditar = New NODOHIJO With {
-            .Id = "NODO01",
+            .Id = "EditMenu",
             .Name = "Editar",
             .Value = False
         }
@@ -243,25 +243,25 @@ Module CREAR_JSON
         nodeEditar.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeDeshacer = New NODOHIJO With {
-            .Id = "SubNodeEditar0",
+            .Id = "UndoToolStripMenuItem",
             .Name = "Deshacer",
             .Value = False
         }
 
         Dim subNodeRehacer = New NODOHIJO With {
-            .Id = "SubNodeEditar1",
+            .Id = "RedoToolStripMenuItem",
             .Name = "Rehacer",
             .Value = False
         }
 
         Dim subNodeCortar = New NODOHIJO With {
-            .Id = "SubNodeEditar2",
+            .Id = "CutToolStripMenuItem",
             .Name = "Cortar",
             .Value = False
         }
 
         Dim subNodeCopiar = New NODOHIJO With {
-            .Id = "SubNodeEditar3",
+            .Id = "CopyToolStripMenuItem",
             .Name = "Copiar",
             .Value = False
         }
@@ -280,7 +280,7 @@ Module CREAR_JSON
 
         'NODO 3 ********************************************************************************
         Dim nodeConfiguracion = New NODOHIJO With {
-            .Id = "NODO02",
+            .Id = "ToolsMenu",
             .Name = "Configuración",
             .Value = False
         }
@@ -304,7 +304,7 @@ Module CREAR_JSON
 
         'NODO 4 ********************************************************************************
         Dim nodeVentanas = New NODOHIJO With {
-            .Id = "NODO03",
+            .Id = "WindowsMenu",
             .Name = "Ventanas",
             .Value = False
         }
