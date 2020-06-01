@@ -1,19 +1,14 @@
-﻿Imports System.Windows.Forms
+﻿Option Strict Off
+Imports System.Windows.Forms
 Imports Newtonsoft.Json
 Imports System.IO
 
 Public Class Principal
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
-        ' Cree una nueva instancia del formulario secundario.
-        Dim ChildForm As New System.Windows.Forms.Form
-        ' Conviértalo en un elemento secundario de este formulario MDI antes de mostrarlo.
-        ChildForm.MdiParent = Me
+        frmNew.MdiParent = Me
+        frmNew.Show()
 
-        m_ChildFormNumber += 1
-        ChildForm.Text = "Ventana " & m_ChildFormNumber
-
-        ChildForm.Show()
     End Sub
 
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click, OpenToolStripButton.Click
@@ -93,10 +88,12 @@ Public Class Principal
         'Obtengo el JSON con los permisos de la base de datos de acuerdo al usuario 
         'lo Deserealizo y utilizo la funcion LlenarMenu y le envio el JSON utilizando
         'el modelo creado
+        Dim SEC As New security
         Dim ver As New usuarios
-        Dim JSONStr As String = ver.VerDatosLogin(loginUsu).Tables(0).Rows(0).Item(3).ToString
+        JSONStr = ver.VerDatosLogin(loginUsu).Tables(0).Rows(0).Item(3).ToString
 
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(SEC.DecryptText(JSONStr, "CLAVE"))
+        'MsgBox(user.Node(0).Id)
         LlenarMenu(user.Node)
         '##########################################################################
     End Sub

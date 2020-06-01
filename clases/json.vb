@@ -225,14 +225,14 @@ Module CREAR_JSON
         subNodeImprimir.SubNodo.Add(SubNodoImprimir_Edit)
         subNodeImprimir.SubNodo.Add(SubNodoImprimir_Del)
 
-        ' END Sub subNodeGuardarCOMO  ********************************************************************************
-
+        ' END Sub subNodeImprimir  ********************************************************************************
         nodeArchivos.SubNodo.Add(subNodeNuevo)
         nodeArchivos.SubNodo.Add(subNodeAbrir)
         nodeArchivos.SubNodo.Add(subNodeGuardar)
         nodeArchivos.SubNodo.Add(subNodeGuardarComo)
         nodeArchivos.SubNodo.Add(subNodeImprimir)
-
+        ' END NODO 1 - MENU 1
+        ' ************************************************
         'NODO 2 ********************************************************************************
         Dim nodeEditar = New NODOHIJO With {
             .Id = "EditMenu",
@@ -247,6 +247,31 @@ Module CREAR_JSON
             .Name = "Deshacer",
             .Value = False
         }
+        'Sub subNodeDeshacer  ***************************************************************************
+
+        subNodeDeshacer.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodeDeshacer_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodeDeshacer_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodeDeshacer_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeDeshacer.SubNodo.Add(subNodeDeshacer_New)
+        subNodeDeshacer.SubNodo.Add(subNodeDeshacer_Edit)
+        subNodeDeshacer.SubNodo.Add(subNodeDeshacer_Del)
+
+        ' END Sub subNodeDeshacer  ********************************************************************************
 
         Dim subNodeRehacer = New NODOHIJO With {
             .Id = "RedoToolStripMenuItem",
@@ -254,33 +279,137 @@ Module CREAR_JSON
             .Value = False
         }
 
+        'Sub subNodeRehacer  ***************************************************************************
+
+        subNodeRehacer.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodeRehacer_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodeRehacer_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodeRehacer_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeRehacer.SubNodo.Add(subNodeRehacer_New)
+        subNodeRehacer.SubNodo.Add(subNodeRehacer_Edit)
+        subNodeRehacer.SubNodo.Add(subNodeRehacer_Del)
+
+        ' END Sub subNodeRehacer  ********************************************************************************
+
         Dim subNodeCortar = New NODOHIJO With {
             .Id = "CutToolStripMenuItem",
             .Name = "Cortar",
             .Value = False
         }
 
+        'Sub subNodeCortar  ***************************************************************************
+
+        subNodeCortar.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodeCortar_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodeCortar_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodeCortar_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeCortar.SubNodo.Add(subNodeCortar_New)
+        subNodeCortar.SubNodo.Add(subNodeCortar_Edit)
+        subNodeCortar.SubNodo.Add(subNodeCortar_Del)
+
+        ' END Sub subNodeCortar  ********************************************************************************
+
         Dim subNodeCopiar = New NODOHIJO With {
             .Id = "CopyToolStripMenuItem",
             .Name = "Copiar",
             .Value = False
         }
+        'Sub subNodeCopiar  ***************************************************************************
+
+        subNodeCopiar.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodeCopiar_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodeCopiar_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodeCopiar_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeCopiar.SubNodo.Add(subNodeCopiar_New)
+        subNodeCopiar.SubNodo.Add(subNodeCopiar_Edit)
+        subNodeCopiar.SubNodo.Add(subNodeCopiar_Del)
+
+        ' END Sub subNodeCopiar  ********************************************************************************
 
         Dim subNodePegar = New NODOHIJO With {
-            .Id = "SubNodeEditar4",
+            .Id = "PasteToolStripMenuItem",
             .Name = "Pegar",
             .Value = False
         }
+        'Sub subNodePegar  ***************************************************************************
+
+        subNodePegar.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodePegar_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodePegar_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodePegar_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodePegar.SubNodo.Add(subNodePegar_New)
+        subNodePegar.SubNodo.Add(subNodePegar_Edit)
+        subNodePegar.SubNodo.Add(subNodePegar_Del)
+
+        ' END Sub subNodePegar  ********************************************************************************
 
         nodeEditar.SubNodo.Add(subNodeDeshacer)
         nodeEditar.SubNodo.Add(subNodeRehacer)
         nodeEditar.SubNodo.Add(subNodeCortar)
         nodeEditar.SubNodo.Add(subNodeCopiar)
         nodeEditar.SubNodo.Add(subNodePegar)
+        ' END NODO 2 - MENU 1
+        ' ************************************************
 
         'NODO 3 ********************************************************************************
         Dim nodeConfiguracion = New NODOHIJO With {
-            .Id = "ToolsMenu",
+            .Id = "ConfigMenu",
             .Name = "Configuración",
             .Value = False
         }
@@ -288,16 +417,66 @@ Module CREAR_JSON
         nodeConfiguracion.SubNodo = New List(Of NODOHIJO)
 
         Dim subUsuarios = New NODOHIJO With {
-            .Id = "SubNodeConfiguracion0",
+            .Id = "UsuariosToolStripMenuItem",
             .Name = "Usuarios",
             .Value = False
         }
+        'Sub subUsuarios  ***************************************************************************
+
+        subUsuarios.SubNodo = New List(Of NODOHIJO)
+
+        Dim subUsuarios_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subUsuarios_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subUsuarios_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subUsuarios.SubNodo.Add(subUsuarios_New)
+        subUsuarios.SubNodo.Add(subUsuarios_Edit)
+        subUsuarios.SubNodo.Add(subUsuarios_Del)
+
+        ' END Sub subUsuarios  ********************************************************************************
 
         Dim subNodeRoles = New NODOHIJO With {
-            .Id = "SubNodeConfiguracion1",
+            .Id = "RolesToolStripMenuItem",
             .Name = "Roles",
             .Value = False
         }
+        'Sub subNodeRoles  ***************************************************************************
+
+        subNodeRoles.SubNodo = New List(Of NODOHIJO)
+
+        Dim subNodeRoles_New = New NODOHIJO With {
+                .Id = "ndoAnadir",
+                .Name = "Añadir",
+                .Value = False
+        }
+
+        Dim subNodeRoles_Edit = New NODOHIJO With {
+                .Id = "ndoEditar",
+                .Name = "Editar",
+                .Value = False
+        }
+        Dim subNodeRoles_Del = New NODOHIJO With {
+                .Id = "ndoElimi",
+                .Name = "Eliminar",
+                .Value = False
+        }
+        subNodeRoles.SubNodo.Add(subNodeRoles_New)
+        subNodeRoles.SubNodo.Add(subNodeRoles_Edit)
+        subNodeRoles.SubNodo.Add(subNodeRoles_Del)
+
+        ' END Sub subNodeRoles  ********************************************************************************
 
         nodeConfiguracion.SubNodo.Add(subUsuarios)
         nodeConfiguracion.SubNodo.Add(subNodeRoles)
@@ -312,26 +491,43 @@ Module CREAR_JSON
         nodeVentanas.SubNodo = New List(Of NODOHIJO)
 
         Dim subNodeNueva = New NODOHIJO With {
-            .Id = "SubNodeVentana0",
+            .Id = "NewWindowToolStripMenuItem",
             .Name = "Nueva Ventana",
             .Value = False
         }
 
         Dim subNodeCascada = New NODOHIJO With {
-            .Id = "SubNodeVentana1",
+            .Id = "CascadeToolStripMenuItem",
             .Name = "Cascada",
             .Value = False
         }
 
         Dim subNodeMosaico = New NODOHIJO With {
-            .Id = "SubNodeVentana2",
+            .Id = "TileVerticalToolStripMenuItem",
             .Name = "Mosaico Vertical",
             .Value = False
         }
-
-        nodeVentanas.SubNodo.Add(subUsuarios)
-        nodeVentanas.SubNodo.Add(subNodeRoles)
+        Dim subNodeMosaico2 = New NODOHIJO With {
+            .Id = "TileHorizontalToolStripMenuItem",
+            .Name = "Mosaico Horizontal",
+            .Value = False
+        }
+        Dim subNodeCerrarTodo = New NODOHIJO With {
+            .Id = "CloseAllToolStripMenuItem",
+            .Name = "Cerrar Todo",
+            .Value = False
+        }
+        Dim subNodeOrganizar = New NODOHIJO With {
+            .Id = "ArrangeIconsToolStripMenuItem",
+            .Name = "Organizar Iconos",
+            .Value = False
+        }
+        nodeVentanas.SubNodo.Add(subNodeNueva)
+        nodeVentanas.SubNodo.Add(subNodeCascada)
         nodeVentanas.SubNodo.Add(subNodeMosaico)
+        nodeVentanas.SubNodo.Add(subNodeMosaico2)
+        nodeVentanas.SubNodo.Add(subNodeCerrarTodo)
+        nodeVentanas.SubNodo.Add(subNodeOrganizar)
 
         result.Node.Add(nodeArchivos)
         result.Node.Add(nodeEditar)

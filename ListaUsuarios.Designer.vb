@@ -34,8 +34,8 @@ Partial Class ListaUsuarios
         Me.fechUp = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nomRol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btModUsu = New System.Windows.Forms.Button()
-        Me.btAddUSU = New System.Windows.Forms.Button()
+        Me.btEdit = New System.Windows.Forms.Button()
+        Me.btAdd = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dglist, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -47,12 +47,14 @@ Partial Class ListaUsuarios
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.dglist)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.btModUsu)
-        Me.GroupBox1.Controls.Add(Me.btAddUSU)
+        Me.GroupBox1.Controls.Add(Me.btEdit)
+        Me.GroupBox1.Controls.Add(Me.btAdd)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(993, 510)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1324, 628)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "LISTA DE CLIENTES"
@@ -67,44 +69,50 @@ Partial Class ListaUsuarios
         Me.dglist.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dglist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dglist.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.iduser, Me.apeuser, Me.nomuser, Me.loginuser, Me.fechCreaUsu, Me.fechUp, Me.nomRol})
-        Me.dglist.Location = New System.Drawing.Point(9, 82)
+        Me.dglist.Location = New System.Drawing.Point(12, 101)
+        Me.dglist.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dglist.Name = "dglist"
         Me.dglist.ReadOnly = True
+        Me.dglist.RowHeadersWidth = 51
         Me.dglist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dglist.Size = New System.Drawing.Size(973, 422)
+        Me.dglist.Size = New System.Drawing.Size(1297, 519)
         Me.dglist.TabIndex = 4
         '
         'iduser
         '
         Me.iduser.DataPropertyName = "id_user"
         Me.iduser.HeaderText = "ID USER"
+        Me.iduser.MinimumWidth = 6
         Me.iduser.Name = "iduser"
         Me.iduser.ReadOnly = True
-        Me.iduser.Width = 81
+        Me.iduser.Width = 96
         '
         'apeuser
         '
         Me.apeuser.DataPropertyName = "ape_user"
         Me.apeuser.HeaderText = "APELLIDOS"
+        Me.apeuser.MinimumWidth = 6
         Me.apeuser.Name = "apeuser"
         Me.apeuser.ReadOnly = True
-        Me.apeuser.Width = 107
+        Me.apeuser.Width = 127
         '
         'nomuser
         '
         Me.nomuser.DataPropertyName = "nom_user"
         Me.nomuser.HeaderText = "NOMBRES"
+        Me.nomuser.MinimumWidth = 6
         Me.nomuser.Name = "nomuser"
         Me.nomuser.ReadOnly = True
-        Me.nomuser.Width = 101
+        Me.nomuser.Width = 121
         '
         'loginuser
         '
         Me.loginuser.DataPropertyName = "login_user"
         Me.loginuser.HeaderText = "LOGIN"
+        Me.loginuser.MinimumWidth = 6
         Me.loginuser.Name = "loginuser"
         Me.loginuser.ReadOnly = True
-        Me.loginuser.Width = 74
+        Me.loginuser.Width = 88
         '
         'fechCreaUsu
         '
@@ -113,9 +121,10 @@ Partial Class ListaUsuarios
         DataGridViewCellStyle1.NullValue = Nothing
         Me.fechCreaUsu.DefaultCellStyle = DataGridViewCellStyle1
         Me.fechCreaUsu.HeaderText = "FECHA CREACIÓN"
+        Me.fechCreaUsu.MinimumWidth = 6
         Me.fechCreaUsu.Name = "fechCreaUsu"
         Me.fechCreaUsu.ReadOnly = True
-        Me.fechCreaUsu.Width = 136
+        Me.fechCreaUsu.Width = 167
         '
         'fechUp
         '
@@ -124,57 +133,63 @@ Partial Class ListaUsuarios
         DataGridViewCellStyle2.NullValue = "SIN DATOS"
         Me.fechUp.DefaultCellStyle = DataGridViewCellStyle2
         Me.fechUp.HeaderText = "FECHA ACTUALIZACIÓN"
+        Me.fechUp.MinimumWidth = 6
         Me.fechUp.Name = "fechUp"
         Me.fechUp.ReadOnly = True
-        Me.fechUp.Width = 168
+        Me.fechUp.Width = 205
         '
         'nomRol
         '
         Me.nomRol.DataPropertyName = "nom_Rol"
         Me.nomRol.HeaderText = "ROL DE USUARIO"
+        Me.nomRol.MinimumWidth = 6
         Me.nomRol.Name = "nomRol"
         Me.nomRol.ReadOnly = True
-        Me.nomRol.Width = 135
+        Me.nomRol.Width = 163
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 32)
+        Me.Label1.Location = New System.Drawing.Point(8, 39)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(367, 17)
+        Me.Label1.Size = New System.Drawing.Size(438, 20)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Aqui se listan los usuarios que tienen acceso al sistema. "
         '
-        'btModUsu
+        'btEdit
         '
-        Me.btModUsu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btModUsu.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btModUsu.Location = New System.Drawing.Point(752, 19)
-        Me.btModUsu.Name = "btModUsu"
-        Me.btModUsu.Size = New System.Drawing.Size(112, 43)
-        Me.btModUsu.TabIndex = 2
-        Me.btModUsu.Text = "MODIFICAR"
-        Me.btModUsu.UseVisualStyleBackColor = True
+        Me.btEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btEdit.Location = New System.Drawing.Point(1003, 23)
+        Me.btEdit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btEdit.Name = "btEdit"
+        Me.btEdit.Size = New System.Drawing.Size(149, 53)
+        Me.btEdit.TabIndex = 2
+        Me.btEdit.Text = "MODIFICAR"
+        Me.btEdit.UseVisualStyleBackColor = True
         '
-        'btAddUSU
+        'btAdd
         '
-        Me.btAddUSU.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btAddUSU.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btAddUSU.Location = New System.Drawing.Point(870, 19)
-        Me.btAddUSU.Name = "btAddUSU"
-        Me.btAddUSU.Size = New System.Drawing.Size(112, 43)
-        Me.btAddUSU.TabIndex = 1
-        Me.btAddUSU.Text = "AÑADIR"
-        Me.btAddUSU.UseVisualStyleBackColor = True
+        Me.btAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAdd.Location = New System.Drawing.Point(1160, 23)
+        Me.btAdd.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btAdd.Name = "btAdd"
+        Me.btAdd.Size = New System.Drawing.Size(149, 53)
+        Me.btAdd.TabIndex = 1
+        Me.btAdd.Text = "AÑADIR"
+        Me.btAdd.UseVisualStyleBackColor = True
         '
         'ListaUsuarios
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1017, 534)
+        Me.ClientSize = New System.Drawing.Size(1356, 657)
         Me.Controls.Add(Me.GroupBox1)
-        Me.MinimumSize = New System.Drawing.Size(625, 530)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MinimumSize = New System.Drawing.Size(827, 641)
         Me.Name = "ListaUsuarios"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -188,8 +203,8 @@ Partial Class ListaUsuarios
 
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents btModUsu As Button
-    Friend WithEvents btAddUSU As Button
+    Friend WithEvents btEdit As Button
+    Friend WithEvents btAdd As Button
     Friend WithEvents dglist As DataGridView
     Friend WithEvents iduser As DataGridViewTextBoxColumn
     Friend WithEvents apeuser As DataGridViewTextBoxColumn

@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class usuarios
     Public erru As String
-    Private md5 As New verifyPass
+    Private md5 As New security
 
     Public Function Login(ByVal usu As String, ByVal pass As String) As String
         Try

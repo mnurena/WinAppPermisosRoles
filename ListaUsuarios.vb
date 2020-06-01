@@ -1,5 +1,5 @@
 ﻿Public Class ListaUsuarios
-    Private Sub btAddUSU_Click(sender As Object, e As EventArgs) Handles btAddUSU.Click
+    Private Sub btAddUSU_Click(sender As Object, e As EventArgs) Handles btAdd.Click
         UsuNuevo.ShowDialog()
     End Sub
 
@@ -12,7 +12,7 @@
         dgList.DataSource = CpaNeg.ListUsers().Tables(0)
     End Sub
 
-    Private Sub btModUsu_Click(sender As Object, e As EventArgs) Handles btModUsu.Click
+    Private Sub btModUsu_Click(sender As Object, e As EventArgs) Handles btEdit.Click
         With UsuNuevo
             .txtnom.Text = dglist.Item(2, dglist.CurrentRow.Index).Value.ToString
             .txtape.Text = dglist.Item(1, dglist.CurrentRow.Index).Value.ToString

@@ -40,25 +40,7 @@ Module leerXML
         End Try
     End Function
 
-    Public Function DecryptText(ByVal strText As String, ByVal strPwd As String) As String
-        Dim i As Integer, C As Integer
-        Dim strBuff As String = ""
 
-        strPwd = UCase$(strPwd)
-
-        'Decrypt string
-        If Len(strPwd) > 0 Then
-            For i = 1 To Len(strText)
-                C = Asc(Mid$(strText, i, 1))
-                C = C - Asc(Mid$(strPwd, (i Mod Len(strPwd)) + 1, 1))
-                strBuff = strBuff & Chr(C And &HFF)
-            Next i
-        Else
-            strBuff = strText
-        End If
-        DecryptText = strBuff
-        Return strBuff
-    End Function
     Public Function DLLPath(Optional ByVal backSlash As Boolean = False) As String
         Dim s As String = IO.Path.GetDirectoryName(GetExecutingAssembly.Location)
         ' si hay que añadirle el backslash

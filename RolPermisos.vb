@@ -15,44 +15,12 @@ Public Class RolPermisos
             cboRol.ValueMember = "id_Rol"
             cboRol.DisplayMember = "nom_Rol"
 
-            ' Aqui verificamos que el valor  que obtenemos  sea NUMERICO
-            ' si lo es mostramos los permisos en el TREEWVIEW enviandole
-            ' como parametro el ID del ROL
-            ' añadido por M4Nvx
-            'If (IsNumeric(cboRol.SelectedValue)) Then
-            '    'Cargar segun selección en bsae de datos
-            '    VerPermisos(CInt(cboRol.SelectedValue))
-            'End If
-
-
-            'M4Nvx
-            'Dim dr As DataRow
-            'Dim dt = New DataTable()
-            'Dim idCoulumn = New DataColumn("id_Rol", Type.GetType("System.Int32"))
-            'Dim nameCoulumn = New DataColumn("nom_Rol", Type.GetType("System.String"))
-
-            'dt.Columns.Add(idCoulumn)
-            'dt.Columns.Add(nameCoulumn)
-
-            'dr = dt.NewRow()
-            'dr("id_Rol") = 1
-            'dr("nom_Rol") = "Name1"
-            'dt.Rows.Add(dr)
-
-            'dr = dt.NewRow()
-            'dr("id_Rol") = 2
-            'dr("nom_Rol") = "Name2"
-            'dt.Rows.Add(dr)
-
-            'cboRol.DataSource = dt
-
         Catch ex As Exception
             MsgBox("Error cargando los permisos del ROL" & rol.erru, MsgBoxStyle.Critical)
         End Try
 
-        tvPermisos.Nodes.Clear()
-
-        populateTreeView(LoadTree().Node)
+        'tvPermisos.Nodes.Clear()
+        'populateTreeView(LoadTree().Node)
 
     End Sub
 
@@ -95,15 +63,11 @@ Public Class RolPermisos
     Private Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
 
         'Manux
-        'Dim result = GEN_JSON(tvPermisos)
-
         ' Se declaran variables para poder guardar el JSON generado
         ' y se envia un mensaje de confirmacion o del posible error.
+        Dim sec As New security
         Dim save As New usuarios
-        Dim result = save.UPRol(CInt(cboRol.SelectedValue), GEN_JSON(tvPermisos))
-        Clipboard.SetText(GEN_JSON(tvPermisos))
-
-
+        Dim result = save.UPRol(CInt(cboRol.SelectedValue), sec.EncryptText(GEN_JSON(tvPermisos), "CLAVE"))
         If result = "1" Then
             MsgBox("SE GUARDO CORRECTAMENTE", MsgBoxStyle.Information)
         Else
@@ -121,13 +85,13 @@ Public Class RolPermisos
         'M4Nvx
         'TODO Comentar cuando se ejecute contra la db
         'Dim JSONStr As String = "{""Node"":[{""SubNodo"":[{""SubNodo"":[{""SubNodo"":[],""Id"":""ndoAnadir"",""Name"":""Añadir"",""Value"":true},{""SubNodo"":[],""Id"":""ndoEditar"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[],""Id"":""ndoElimi"",""Name"":""Eliminar"",""Value"":true}],""Id"":""SubNodeArchivo0"",""Name"":""Nuevo"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo1"",""Name"":""Abrir"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo2"",""Name"":""Guardar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeArchivo3"",""Name"":""Guardar como"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo4"",""Name"":""Imprimir"",""Value"":true}],""Id"":""NODO00"",""Name"":""Archivos"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeEditar0"",""Name"":""Deshacer"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar1"",""Name"":""Rehacer"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar2"",""Name"":""Cortar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar3"",""Name"":""Copiar"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar4"",""Name"":""Pegar"",""Value"":true}],""Id"":""NODO01"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false}],""Id"":""NODO02"",""Name"":""Configuración"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeVentana2"",""Name"":""Mosaico Vertical"",""Value"":true}],""Id"":""NODO03"",""Name"":""Ventanas"",""Value"":false}]}"
-
+        Dim sec As New security
         Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         ' ##################################################################################
         ' AQUI APARECE EL PROBLEMA, OBTIENE EL JSON DE LA BD, PERO NO LO DESEREALIZA
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(JSONStr)
-        Clipboard.SetText(JSONStr)
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, "CLAVE"))
+        'Clipboard.SetText(JSONStr)
         populateTreeView(user.Node)
 
     End Sub
@@ -178,7 +142,6 @@ Public Class RolPermisos
                     populateTreeView2(ngObject.SubNodo, childNode)
 
                 End If
-
 
             Next
 

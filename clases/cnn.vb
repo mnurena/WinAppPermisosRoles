@@ -9,23 +9,23 @@ Public Class cnn
             Dim cs As String
             ' Data Source=.;Initial Catalog=BDFARMA;User ID=sa
             cs = "Data Source=.;Initial Catalog=BDFARMA;User ID=sa; Password=272122_MRF" 'VERCadena(DB)
-            cn = New SqlConnection
-            cn.ConnectionString = cs
+            cn = New SqlConnection With {
+                .ConnectionString = cs}
             cn.Open()
-            INICIACONEX = True
+            Return True
         Catch ex As Exception
-            INICIACONEX = False
             er = Err.Description
+            Return False
         End Try
     End Function
 
     Private Function VERCadena(ByVal BD As String) As String
         Dim Serv, Instance, Usuario, Passw, Cadena As String
-
-        Serv = DecryptText(VerDatoXML("/configuration/appSettings/add", "serv"), "UNISYSTEC_DjMiki")
-        Instance = DecryptText(VerDatoXML("/configuration/appSettings/add", "inst"), "UNISYSTEC_DjMiki")
-        Usuario = DecryptText(VerDatoXML("/configuration/appSettings/add", "usu"), "UNISYSTEC_DjMiki")
-        Passw = DecryptText(VerDatoXML("/configuration/appSettings/add", "pa"), "UNISYSTEC_DjMiki")
+        Dim sec As New security
+        Serv = sec.DecryptText(VerDatoXML("/configuration/appSettings/add", "serv"), "CLAVE")
+        Instance = sec.DecryptText(VerDatoXML("/configuration/appSettings/add", "inst"), "CLAVE")
+        Usuario = sec.DecryptText(VerDatoXML("/configuration/appSettings/add", "usu"), "CLAVE")
+        Passw = sec.DecryptText(VerDatoXML("/configuration/appSettings/add", "pa"), "CLAVE")
         'Data Source=.;Initial Catalog=SISCONTA;Integrated Security=True
         If Usuario = "" And Passw = "" And Instance = "" Then
             Cadena = "Data Source=" & Serv & ";Initial Catalog=" & BD & ";Integrated Security=True"

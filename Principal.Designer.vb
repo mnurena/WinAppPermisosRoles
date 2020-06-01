@@ -23,7 +23,6 @@ Partial Class Principal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,7 +49,7 @@ Partial Class Principal
         Me.ViewMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolBarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusBarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfigMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RolesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -77,7 +76,6 @@ Partial Class Principal
         Me.HelpToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -85,7 +83,7 @@ Partial Class Principal
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileMenu, Me.EditMenu, Me.ViewMenu, Me.ToolsMenu, Me.WindowsMenu, Me.HelpMenu})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileMenu, Me.EditMenu, Me.ViewMenu, Me.ConfigMenu, Me.WindowsMenu, Me.HelpMenu})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.MdiWindowListItem = Me.WindowsMenu
         Me.MenuStrip.Name = "MenuStrip"
@@ -272,12 +270,12 @@ Partial Class Principal
         Me.StatusBarToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.StatusBarToolStripMenuItem.Text = "&Barra de estado"
         '
-        'ToolsMenu
+        'ConfigMenu
         '
-        Me.ToolsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.RolesToolStripMenuItem})
-        Me.ToolsMenu.Name = "ToolsMenu"
-        Me.ToolsMenu.Size = New System.Drawing.Size(95, 20)
-        Me.ToolsMenu.Text = "&Configuración"
+        Me.ConfigMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.RolesToolStripMenuItem})
+        Me.ConfigMenu.Name = "ConfigMenu"
+        Me.ConfigMenu.Size = New System.Drawing.Size(95, 20)
+        Me.ConfigMenu.Text = "&Configuración"
         '
         'UsuariosToolStripMenuItem
         '
@@ -345,7 +343,7 @@ Partial Class Principal
         '
         Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
         Me.ContentsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F1), System.Windows.Forms.Keys)
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.ContentsToolStripMenuItem.Text = "&Contenido"
         '
         'IndexToolStripMenuItem
@@ -353,7 +351,7 @@ Partial Class Principal
         Me.IndexToolStripMenuItem.Image = CType(resources.GetObject("IndexToolStripMenuItem.Image"), System.Drawing.Image)
         Me.IndexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.IndexToolStripMenuItem.Text = "&Índice"
         '
         'SearchToolStripMenuItem
@@ -361,18 +359,18 @@ Partial Class Principal
         Me.SearchToolStripMenuItem.Image = CType(resources.GetObject("SearchToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SearchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.SearchToolStripMenuItem.Text = "&Buscar"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(173, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.AboutToolStripMenuItem.Text = "&Acerca de..."
         '
         'ToolStrip
@@ -502,7 +500,6 @@ Partial Class Principal
     Friend WithEvents HelpToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents PrintPreviewToolStripButton As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolTip As System.Windows.Forms.ToolTip
     Friend WithEvents ToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents PrintToolStripButton As System.Windows.Forms.ToolStripButton
@@ -536,7 +533,7 @@ Partial Class Principal
     Friend WithEvents ViewMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolBarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusBarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolsMenu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConfigMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RolesToolStripMenuItem As ToolStripMenuItem
 End Class
