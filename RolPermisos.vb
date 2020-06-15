@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports Newtonsoft.Json
+Imports WinAppPermisosRoles.My.Resources
 
 Public Class RolPermisos
 
@@ -16,7 +17,7 @@ Public Class RolPermisos
             cboRol.DisplayMember = "nom_Rol"
 
         Catch ex As Exception
-            MsgBox("Error cargando los permisos del ROL" & rol.erru, MsgBoxStyle.Critical)
+            MsgBox(Resource.RolPermisos_Mensaje_Error & rol.erru, MsgBoxStyle.Critical)
         End Try
 
         'tvPermisos.Nodes.Clear()
@@ -67,9 +68,9 @@ Public Class RolPermisos
         ' y se envia un mensaje de confirmacion o del posible error.
         Dim sec As New security
         Dim save As New usuarios
-        Dim result = save.UPRol(CInt(cboRol.SelectedValue), sec.EncryptText(GEN_JSON(tvPermisos), "CLAVE"))
+        Dim result = save.UPRol(CInt(cboRol.SelectedValue), sec.EncryptText(GEN_JSON(tvPermisos), Resource.Security_Key))
         If result = "1" Then
-            MsgBox("SE GUARDO CORRECTAMENTE", MsgBoxStyle.Information)
+            MsgBox(Resource.RolPermisos_Mensaje_Ok, MsgBoxStyle.Information)
         Else
             MsgBox("ERROR: " & vbNewLine & save.erru, MsgBoxStyle.Critical)
         End If
@@ -90,9 +91,14 @@ Public Class RolPermisos
         ' ##################################################################################
         ' AQUI APARECE EL PROBLEMA, OBTIENE EL JSON DE LA BD, PERO NO LO DESEREALIZA
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, "CLAVE"))
-        'Clipboard.SetText(JSONStr)
-        populateTreeView(user.Node)
+
+        'TODO Siempre validar
+        If JSONStr IsNot Nothing Then
+
+            Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, Resource.Security_Key))
+            'Clipboard.SetText(JSONStr)
+            populateTreeView(user.Node)
+        End If
 
     End Sub
 

@@ -13,15 +13,19 @@
     End Sub
 
     Private Sub btModUsu_Click(sender As Object, e As EventArgs) Handles btEdit.Click
-        With UsuNuevo
-            .txtnom.Text = dglist.Item(2, dglist.CurrentRow.Index).Value.ToString
-            .txtape.Text = dglist.Item(1, dglist.CurrentRow.Index).Value.ToString
-            .txtidUsu.Text = dglist.Item(0, dglist.CurrentRow.Index).Value.ToString
-            .txtlogin.ReadOnly = True : .txtlogin.Text = dglist.Item(3, dglist.CurrentRow.Index).Value.ToString
-            .CARGACBO()
-            .cborol.Text = dglist.Item(6, dglist.CurrentRow.Index).Value.ToString
-            .btGuardar.Text = "&ACTUALIZAR"
-        End With
-        UsuNuevo.ShowDialog()
+
+        If dglist.CurrentRow IsNot Nothing Then
+            With UsuNuevo
+                .txtnom.Text = dglist.Item(2, dglist.CurrentRow.Index).Value.ToString
+                .txtape.Text = dglist.Item(1, dglist.CurrentRow.Index).Value.ToString
+                .txtidUsu.Text = dglist.Item(0, dglist.CurrentRow.Index).Value.ToString
+                .txtlogin.ReadOnly = True : .txtlogin.Text = dglist.Item(3, dglist.CurrentRow.Index).Value.ToString
+                .CARGACBO()
+                .cborol.Text = dglist.Item(6, dglist.CurrentRow.Index).Value.ToString
+                .btGuardar.Text = "&ACTUALIZAR"
+            End With
+            UsuNuevo.ShowDialog()
+        End If
+
     End Sub
 End Class

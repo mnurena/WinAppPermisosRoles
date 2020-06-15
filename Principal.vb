@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 Imports Newtonsoft.Json
 Imports System.IO
+Imports WinAppPermisosRoles.My.Resources
 
 Public Class Principal
 
@@ -88,11 +89,13 @@ Public Class Principal
         'Obtengo el JSON con los permisos de la base de datos de acuerdo al usuario 
         'lo Deserealizo y utilizo la funcion LlenarMenu y le envio el JSON utilizando
         'el modelo creado
-        Dim SEC As New security
+        Dim sec As New security
         Dim ver As New usuarios
         JSONStr = ver.VerDatosLogin(loginUsu).Tables(0).Rows(0).Item(3).ToString
 
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(SEC.DecryptText(JSONStr, "CLAVE"))
+
+        'TODO Siempre validar
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, Resource.Security_Key))
         'MsgBox(user.Node(0).Id)
         LlenarMenu(user.Node)
         '##########################################################################
@@ -154,4 +157,7 @@ Public Class Principal
         ListaUsuarios.Show()
     End Sub
 
+    Private Sub HelpMenu_Click(sender As Object, e As EventArgs) Handles HelpMenu.Click
+
+    End Sub
 End Class

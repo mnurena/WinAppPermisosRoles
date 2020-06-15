@@ -1,5 +1,6 @@
 ﻿Imports Newtonsoft.Json
 Imports System.IO
+Imports WinAppPermisosRoles.My.Resources
 
 Module CREAR_JSON
     Public Function GEN_JSON(treeview As TreeView) As String
@@ -52,6 +53,7 @@ Module CREAR_JSON
 
     End Function
 
+    'Todo Cambiar a recursos de diccionario
     'Carga de datos
     Public Function LoadTree() As NodeRootDto
 
@@ -61,7 +63,7 @@ Module CREAR_JSON
 
         Dim nodeArchivos = New NODOHIJO With {
             .Id = "FileMenu",
-            .Name = "Archivos",
+            .Name = Resource.TreeNode_File, 'Recurso de diccionario
             .Value = False
         }
         nodeArchivos.SubNodo = New List(Of NODOHIJO)

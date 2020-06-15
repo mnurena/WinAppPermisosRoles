@@ -2,6 +2,8 @@
 Imports System.Security.Cryptography
 Imports System.Reflection.Assembly
 Module leerXML
+
+    'Todo, si quieres leer el archivo app.config mira el ejemplo en cnn.vb
     Public Function VerDatoXML(ByVal Nodo As String, ByVal Item As String) As String
         Try
             Dim m_xmld As XmlDocument
