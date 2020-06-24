@@ -2,6 +2,8 @@
 Imports System.IO
 Imports WinAppPermisosRoles.My.Resources
 
+' se genera un modelo del json que se utilizara para cargar el TREEVIEW
+' a json model is generated which is used to load the TREEVIEW
 Module CREAR_JSON
     Public Function GEN_JSON(treeview As TreeView) As String
 
@@ -53,7 +55,6 @@ Module CREAR_JSON
 
     End Function
 
-    'Todo Cambiar a recursos de diccionario
     'Carga de datos
     Public Function LoadTree() As NodeRootDto
 
@@ -70,7 +71,7 @@ Module CREAR_JSON
 
         Dim subNodeNuevo = New NODOHIJO With {
             .Id = "NewToolStripMenuItem",
-            .Name = "Nuevo",
+            .Name = Resource.TREENODE_NEW,
             .Value = False
         }
 
@@ -102,7 +103,7 @@ Module CREAR_JSON
 
         Dim subNodeAbrir = New NODOHIJO With {
             .Id = "OpenToolStripMenuItem",
-            .Name = "Abrir",
+            .Name = Resource.TREENODE_OPEN,
             .Value = False
         }
         'Sub subNodeAbrir  ********************************************************************************
@@ -134,7 +135,7 @@ Module CREAR_JSON
 
         Dim subNodeGuardar = New NODOHIJO With {
             .Id = "SaveToolStripMenuItem",
-            .Name = "Guardar",
+            .Name = Resource.TREENODE_SAVE,
             .Value = False
         }
         'Sub subNodeGuardar  ********************************************************************************
@@ -166,7 +167,7 @@ Module CREAR_JSON
 
         Dim subNodeGuardarComo = New NODOHIJO With {
             .Id = "SaveAsToolStripMenuItem",
-            .Name = "Guardar como",
+            .Name = Resource.TREENODE_SAVEAS,
             .Value = False
         }
 
@@ -199,7 +200,7 @@ Module CREAR_JSON
 
         Dim subNodeImprimir = New NODOHIJO With {
             .Id = "PrintToolStripMenuItem",
-            .Name = "Imprimir",
+            .Name = Resource.TREENODE_PRINT,
             .Value = False
         }
 

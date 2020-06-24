@@ -3,6 +3,8 @@ Imports System.Text
 Imports Newtonsoft.Json
 Imports WinAppPermisosRoles.My.Resources
 
+' Formulario para dar permisos al sistema y acciones a un determinado grupo de usuarios
+' Form to give system permissions and actions to a certain group of users
 Public Class RolPermisos
 
     Private Sub RolPermisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -68,7 +70,7 @@ Public Class RolPermisos
         ' y se envia un mensaje de confirmacion o del posible error.
         Dim sec As New security
         Dim save As New usuarios
-        Dim result = save.UPRol(CInt(cboRol.SelectedValue), sec.EncryptText(GEN_JSON(tvPermisos), Resource.Security_Key))
+        Dim result = save.UPRol(CInt(cboRol.SelectedValue), sec.EncryptText(GEN_JSON(tvPermisos), "SECURITY_KEY"))
         If result = "1" Then
             MsgBox(Resource.RolPermisos_Mensaje_Ok, MsgBoxStyle.Information)
         Else
@@ -83,9 +85,6 @@ Public Class RolPermisos
 
         Dim ver As New usuarios
 
-        'M4Nvx
-        'TODO Comentar cuando se ejecute contra la db
-        'Dim JSONStr As String = "{""Node"":[{""SubNodo"":[{""SubNodo"":[{""SubNodo"":[],""Id"":""ndoAnadir"",""Name"":""Añadir"",""Value"":true},{""SubNodo"":[],""Id"":""ndoEditar"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[],""Id"":""ndoElimi"",""Name"":""Eliminar"",""Value"":true}],""Id"":""SubNodeArchivo0"",""Name"":""Nuevo"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo1"",""Name"":""Abrir"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo2"",""Name"":""Guardar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeArchivo3"",""Name"":""Guardar como"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeArchivo4"",""Name"":""Imprimir"",""Value"":true}],""Id"":""NODO00"",""Name"":""Archivos"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeEditar0"",""Name"":""Deshacer"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar1"",""Name"":""Rehacer"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar2"",""Name"":""Cortar"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeEditar3"",""Name"":""Copiar"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeEditar4"",""Name"":""Pegar"",""Value"":true}],""Id"":""NODO01"",""Name"":""Editar"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false}],""Id"":""NODO02"",""Name"":""Configuración"",""Value"":false},{""SubNodo"":[{""SubNodo"":[],""Id"":""SubNodeConfiguracion0"",""Name"":""Usuarios"",""Value"":true},{""SubNodo"":[],""Id"":""SubNodeConfiguracion1"",""Name"":""Roles"",""Value"":false},{""SubNodo"":[],""Id"":""SubNodeVentana2"",""Name"":""Mosaico Vertical"",""Value"":true}],""Id"":""NODO03"",""Name"":""Ventanas"",""Value"":false}]}"
         Dim sec As New security
         Dim JSONStr As String = ver.VerPermisos(idrol).Tables(0).Rows(0).Item(0).ToString
         ' ##################################################################################
@@ -93,11 +92,13 @@ Public Class RolPermisos
         ' AGREGUE NUEVOS NODOS, "ACTIONS"
 
         'TODO Siempre validar
-        If JSONStr IsNot Nothing Then
+        If JSONStr IsNot Nothing And JSONStr IsNot "" Then
 
-            Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, Resource.Security_Key))
-            'Clipboard.SetText(JSONStr)
+            Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, "SECURITY_KEY"))
             populateTreeView(user.Node)
+        Else
+            tvPermisos.Nodes.Clear()
+            populateTreeView(LoadTree().Node)
         End If
 
     End Sub
@@ -156,8 +157,22 @@ Public Class RolPermisos
     End Sub
 
     Private Sub btNuevo_Click(sender As Object, e As EventArgs) Handles btNuevo.Click
-        tvPermisos.Nodes.Clear()
+        Dim NOM_Rol As String
+        Dim adrol As New usuarios
+        NOM_Rol = InputBox("Ingresa el NOMBRE del nuevo rol", "NUEVO ROL", "")
+        If NOM_Rol <> "" And NOM_Rol <> "null" Then
+            If adrol.AddRol(NOM_Rol) = 1 Then
+                MsgBox("Se inserto correctamente el nuevo ROL", vbInformation)
+                RolPermisos_Load(sender, e)
+                cboRol.Text = NOM_Rol
+                tvPermisos.Nodes.Clear()
 
-        populateTreeView(LoadTree().Node)
+                populateTreeView(LoadTree().Node)
+            Else
+                MsgBox(adrol.erru, vbCritical)
+            End If
+        End If
+
+
     End Sub
 End Class

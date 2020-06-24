@@ -35,7 +35,7 @@ Public Class Principal
 
 
     Private Sub ExitToolsStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Me.Close()
+        Me.Dispose()
     End Sub
 
     Private Sub CutToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CutToolStripMenuItem.Click
@@ -84,7 +84,6 @@ Public Class Principal
     Private m_ChildFormNumber As Integer
 
     Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'LoginForm1.Close()
         '###########################################################################
         'Obtengo el JSON con los permisos de la base de datos de acuerdo al usuario 
         'lo Deserealizo y utilizo la funcion LlenarMenu y le envio el JSON utilizando
@@ -95,7 +94,7 @@ Public Class Principal
 
 
         'TODO Siempre validar
-        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, Resource.Security_Key))
+        Dim user = JsonConvert.DeserializeObject(Of NodeRootDto)(sec.DecryptText(JSONStr, "SECURITY_KEY"))
         'MsgBox(user.Node(0).Id)
         LlenarMenu(user.Node)
         '##########################################################################
@@ -147,7 +146,6 @@ Public Class Principal
     End Sub
 
     Private Sub RolesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RolesToolStripMenuItem.Click
-        'RolPermisos.MdiParent = Me
         RolPermisos.ShowDialog()
 
     End Sub

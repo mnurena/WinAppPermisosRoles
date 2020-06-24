@@ -1,4 +1,6 @@
-﻿Public Class BaseNodo
+﻿' modelo que sera utilizado para poder ser asignados al TREEVIEW
+' model that will be used to be assigned to TREEVIEW
+Public Class BaseNodo
 
     'NOTA si tienes intensión de agregar más nodos se puede agregar estos 2 campos
 

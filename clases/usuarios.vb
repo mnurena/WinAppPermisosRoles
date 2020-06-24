@@ -3,6 +3,9 @@ Public Class usuarios
     Public erru As String
     Private md5 As New security
 
+    ' funciones para listar y manipular datos de usuarios
+    ' functions to list and manipulate user data
+
     Public Function Login(ByVal usu As String, ByVal pass As String) As String
         Try
             Dim dllBD As New cnn
@@ -136,8 +139,6 @@ Public Class usuarios
             Dim dpt As New SqlDataAdapter("SP_USU_VERPERM", dllBD.cn)
             dpt.SelectCommand.CommandType = CommandType.StoredProcedure
             dpt.SelectCommand.Parameters.AddWithValue("@IDROL", idRol)
-            'dpt.SelectCommand.Parameters.AddWithValue("@RESULT", " ")
-            'dpt.SelectCommand.Parameters("@RESULT").Direction = ParameterDirection.Output
             dpt.Fill(ds, "SP_USU_VERPERM")
             VerPermisos = ds
             dllBD.CERRARCONEX()
@@ -184,6 +185,26 @@ Public Class usuarios
             dllBD = Nothing
         Catch ex As Exception
             erru = Err.Description
+        End Try
+    End Function
+
+    Public Function AddRol(ByVal nomRol As String) As Integer
+        Try
+            Dim ds As New DataSet
+            Dim dllBD As New CNN
+            dllBD.INICIACONEX()
+            Dim dpt As New SqlDataAdapter("SP_USU_INSERT_ROL", dllBD.cn)
+            dpt.SelectCommand.CommandType = CommandType.StoredProcedure
+            dpt.SelectCommand.Parameters.AddWithValue("@NOMROL", nomRol)
+            dpt.SelectCommand.Parameters.AddWithValue("@RESULT", " ")
+            dpt.SelectCommand.Parameters("@RESULT").Direction = ParameterDirection.Output
+            dpt.SelectCommand.ExecuteNonQuery()
+            Return Convert.ToInt32(Trim(dpt.SelectCommand.Parameters("@RESULT").Value.ToString))
+
+            dllBD.CERRARCONEX()
+        Catch ex As Exception
+            erru = Err.Description
+            Return 2
         End Try
     End Function
 End Class

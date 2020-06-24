@@ -1,3 +1,4 @@
+
 Public Class LoginForm1
 
     ' TODO: inserte el código para realizar autenticación personalizada usando el nombre de usuario y la contraseña proporcionada 
@@ -22,22 +23,19 @@ Public Class LoginForm1
                 loginUsu = UsernameTextBox.Text
                 Principal.Show()
                 Me.Close()
-                'MsgBox(add & idUsu)
             ElseIf add = "0" Then
-                'MsgBox(login.erru)
                 MsgBox("ERROR de USUARIO y CONTRASEÑA" & vbNewLine & "Vuelva a Intentarlo", MsgBoxStyle.Critical, "Inicio de Sesión " & My.Application.Info.Title)
                 PasswordTextBox.ResetText()
                 PasswordTextBox.Focus()
             Else
                 MsgBox("ERROR de SERVIDOR, revice su conexion y el SERVIDOR." & vbNewLine & "Vuelva a Intentarlo" & vbNewLine & LOG.erru, MsgBoxStyle.Critical, "Inicio de Sesión " & My.Application.Info.Title)
             End If
-            add = Nothing
-            LOG = Nothing
+
         End If
     End Sub
 
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click
-        Me.Close()
+        Me.Dispose()
     End Sub
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

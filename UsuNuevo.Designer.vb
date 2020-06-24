@@ -54,9 +54,11 @@ Partial Class UsuNuevo
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(248, 142)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(331, 175)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "DATOS"
@@ -64,19 +66,21 @@ Partial Class UsuNuevo
         'txtlogin
         '
         Me.txtlogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlogin.Location = New System.Drawing.Point(72, 77)
+        Me.txtlogin.Location = New System.Drawing.Point(96, 95)
+        Me.txtlogin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtlogin.MaxLength = 12
         Me.txtlogin.Name = "txtlogin"
-        Me.txtlogin.Size = New System.Drawing.Size(155, 23)
+        Me.txtlogin.Size = New System.Drawing.Size(205, 26)
         Me.txtlogin.TabIndex = 2
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(9, 80)
+        Me.Label4.Location = New System.Drawing.Point(12, 98)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(47, 17)
+        Me.Label4.Size = New System.Drawing.Size(55, 20)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Login:"
         '
@@ -84,56 +88,62 @@ Partial Class UsuNuevo
         '
         Me.cborol.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cborol.FormattingEnabled = True
-        Me.cborol.Location = New System.Drawing.Point(72, 105)
+        Me.cborol.Location = New System.Drawing.Point(96, 129)
+        Me.cborol.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cborol.Name = "cborol"
-        Me.cborol.Size = New System.Drawing.Size(155, 24)
+        Me.cborol.Size = New System.Drawing.Size(205, 28)
         Me.cborol.TabIndex = 3
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 108)
+        Me.Label3.Location = New System.Drawing.Point(11, 133)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 17)
+        Me.Label3.Size = New System.Drawing.Size(39, 20)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Rol:"
         '
         'txtape
         '
         Me.txtape.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtape.Location = New System.Drawing.Point(72, 50)
+        Me.txtape.Location = New System.Drawing.Point(96, 62)
+        Me.txtape.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtape.MaxLength = 20
         Me.txtape.Name = "txtape"
-        Me.txtape.Size = New System.Drawing.Size(155, 23)
+        Me.txtape.Size = New System.Drawing.Size(205, 26)
         Me.txtape.TabIndex = 1
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 53)
+        Me.Label2.Location = New System.Drawing.Point(12, 65)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 17)
+        Me.Label2.Size = New System.Drawing.Size(73, 20)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Apellido:"
         '
         'txtnom
         '
         Me.txtnom.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnom.Location = New System.Drawing.Point(72, 24)
+        Me.txtnom.Location = New System.Drawing.Point(96, 30)
+        Me.txtnom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnom.MaxLength = 15
         Me.txtnom.Name = "txtnom"
-        Me.txtnom.Size = New System.Drawing.Size(155, 23)
+        Me.txtnom.Size = New System.Drawing.Size(205, 26)
         Me.txtnom.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 25)
+        Me.Label1.Location = New System.Drawing.Point(12, 31)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(62, 17)
+        Me.Label1.Size = New System.Drawing.Size(73, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Nombre:"
         '
@@ -145,19 +155,22 @@ Partial Class UsuNuevo
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(270, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(360, 15)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(248, 78)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(331, 96)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "SEGURIDAD"
         '
         'txtpass2
         '
-        Me.txtpass2.Location = New System.Drawing.Point(87, 49)
+        Me.txtpass2.Location = New System.Drawing.Point(116, 60)
+        Me.txtpass2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtpass2.Name = "txtpass2"
         Me.txtpass2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpass2.Size = New System.Drawing.Size(155, 20)
+        Me.txtpass2.Size = New System.Drawing.Size(205, 23)
         Me.txtpass2.TabIndex = 1
         Me.txtpass2.UseSystemPasswordChar = True
         '
@@ -165,18 +178,20 @@ Partial Class UsuNuevo
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(4, 49)
+        Me.Label5.Location = New System.Drawing.Point(5, 60)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(73, 17)
+        Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 2
         Me.Label5.Text = "Confirmar:"
         '
         'txtpass
         '
-        Me.txtpass.Location = New System.Drawing.Point(87, 23)
+        Me.txtpass.Location = New System.Drawing.Point(116, 28)
+        Me.txtpass.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtpass.Name = "txtpass"
         Me.txtpass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpass.Size = New System.Drawing.Size(155, 20)
+        Me.txtpass.Size = New System.Drawing.Size(205, 23)
         Me.txtpass.TabIndex = 0
         Me.txtpass.UseSystemPasswordChar = True
         '
@@ -184,9 +199,10 @@ Partial Class UsuNuevo
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(4, 23)
+        Me.Label6.Location = New System.Drawing.Point(5, 28)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(85, 17)
+        Me.Label6.Size = New System.Drawing.Size(100, 20)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Contraseña:"
         '
@@ -194,32 +210,36 @@ Partial Class UsuNuevo
         '
         Me.btGuardar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btGuardar.Location = New System.Drawing.Point(406, 96)
+        Me.btGuardar.Location = New System.Drawing.Point(541, 118)
+        Me.btGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btGuardar.Name = "btGuardar"
-        Me.btGuardar.Size = New System.Drawing.Size(112, 43)
+        Me.btGuardar.Size = New System.Drawing.Size(149, 53)
         Me.btGuardar.TabIndex = 2
         Me.btGuardar.Text = "&AÑADIR"
         Me.btGuardar.UseVisualStyleBackColor = True
         '
         'txtidUsu
         '
-        Me.txtidUsu.Location = New System.Drawing.Point(286, 117)
+        Me.txtidUsu.Location = New System.Drawing.Point(381, 144)
+        Me.txtidUsu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtidUsu.Name = "txtidUsu"
         Me.txtidUsu.ReadOnly = True
-        Me.txtidUsu.Size = New System.Drawing.Size(100, 20)
+        Me.txtidUsu.Size = New System.Drawing.Size(132, 22)
         Me.txtidUsu.TabIndex = 3
+        Me.txtidUsu.Visible = False
         '
         'UsuNuevo
         '
         Me.AcceptButton = Me.btGuardar
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 166)
+        Me.ClientSize = New System.Drawing.Size(707, 204)
         Me.Controls.Add(Me.txtidUsu)
         Me.Controls.Add(Me.btGuardar)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "UsuNuevo"

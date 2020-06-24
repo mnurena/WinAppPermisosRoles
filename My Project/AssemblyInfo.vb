@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("WinAppPermisosRoles")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("SISTEMA DE PERMISOS Y ROLES DE USUARIO POR MNURENA Y MANU")>
+<Assembly: AssemblyCompany("PROGRAMACIONX.NET")>
 <Assembly: AssemblyProduct("WinAppPermisosRoles")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyCopyright("Free Software")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

@@ -1,4 +1,6 @@
-﻿Public Class ListaUsuarios
+﻿' formulario en el que se muestra la lista de clientes asi como manipular sus datos
+' form in which the list of clients is shown as well as manipulating their data
+Public Class ListaUsuarios
     Private Sub btAddUSU_Click(sender As Object, e As EventArgs) Handles btAdd.Click
         UsuNuevo.ShowDialog()
     End Sub
@@ -9,7 +11,7 @@
     Sub VerUsers()
         Dim CpaNeg As New usuarios
         CpaNeg.ListUsers().Tables(0).Clear()
-        dgList.DataSource = CpaNeg.ListUsers().Tables(0)
+        dglist.DataSource = CpaNeg.ListUsers().Tables(0)
     End Sub
 
     Private Sub btModUsu_Click(sender As Object, e As EventArgs) Handles btEdit.Click
