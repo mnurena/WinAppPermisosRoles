@@ -18,6 +18,6 @@ Aplicación desarrollada para la administración de Roles y permisos de usuarios
     - Usuario: usuario2
     - Contraseña: 123456
    
- ## Mas información{[d
+ ## Mas información:
  Para mas información sobre el uso e implementación del sistema en otros sistemas en [ProgramacionX.Net](https://programacionx.net/)
  
